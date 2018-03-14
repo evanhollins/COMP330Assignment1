@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37C8C32F2059D8FC00E1A9E2 /* Helicopter.h in Sources */ = {isa = PBXBuildFile; fileRef = 37C8C32E2059D8FC00E1A9E2 /* Helicopter.h */; };
+		37C8C3312059E03400E1A9E2 /* Color.h in Sources */ = {isa = PBXBuildFile; fileRef = 37C8C3302059E03400E1A9E2 /* Color.h */; };
 		37E8B00C2059313500CE56BF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37E8B00B2059313500CE56BF /* main.cpp */; };
+		37E8B0152059314500CE56BF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E8B0132059314500CE56BF /* OpenGL.framework */; };
+		37E8B0162059314500CE56BF /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E8B0142059314500CE56BF /* GLUT.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +27,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		37C8C32E2059D8FC00E1A9E2 /* Helicopter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helicopter.h; sourceTree = "<group>"; };
+		37C8C3302059E03400E1A9E2 /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
+		37C8C3322059E4DE00E1A9E2 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		37E8B0082059313500CE56BF /* COMP330-Assignment1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "COMP330-Assignment1"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37E8B00B2059313500CE56BF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		37E8B0132059314500CE56BF /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		37E8B0142059314500CE56BF /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37E8B0152059314500CE56BF /* OpenGL.framework in Frameworks */,
+				37E8B0162059314500CE56BF /* GLUT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +54,7 @@
 			children = (
 				37E8B00A2059313500CE56BF /* COMP330-Assignment1 */,
 				37E8B0092059313500CE56BF /* Products */,
+				37E8B0122059314400CE56BF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,8 +70,20 @@
 			isa = PBXGroup;
 			children = (
 				37E8B00B2059313500CE56BF /* main.cpp */,
+				37C8C3302059E03400E1A9E2 /* Color.h */,
+				37C8C3322059E4DE00E1A9E2 /* main.h */,
+				37C8C32E2059D8FC00E1A9E2 /* Helicopter.h */,
 			);
 			path = "COMP330-Assignment1";
+			sourceTree = "<group>";
+		};
+		37E8B0122059314400CE56BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				37E8B0142059314500CE56BF /* GLUT.framework */,
+				37E8B0132059314500CE56BF /* OpenGL.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +143,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37C8C32F2059D8FC00E1A9E2 /* Helicopter.h in Sources */,
+				37C8C3312059E03400E1A9E2 /* Color.h in Sources */,
 				37E8B00C2059313500CE56BF /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,6 +259,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				"OTHER_CPLUSPLUSFLAGS[arch=*]" = "-Wno-deprecated";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -241,6 +268,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				"OTHER_CPLUSPLUSFLAGS[arch=*]" = "-Wno-deprecated";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
