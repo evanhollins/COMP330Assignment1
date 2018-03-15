@@ -8,6 +8,9 @@
 
 #include <stdio.h>
 
+#ifndef Color_h
+#define Color_h
+
 class Color {
 private:
     float r;
@@ -15,7 +18,7 @@ private:
     float b;
     float a;
 public:
-    Color();
+    Color(float _r, float _g, float _b, float _a);
     float getR();
     float getG();
     float getB();
@@ -26,11 +29,11 @@ public:
     void setA(float x);
     
 };
-Color::Color(void) {
-    this->r = 0.0;
-    this->g = 0.0;
-    this->b = 0.0;
-    this->a = 0.0;
+Color::Color(float _r, float _g, float _b, float _a) {
+    this->r = _r;
+    this->g = _g;
+    this->b = _b;
+    this->a = _a;
 }
 float Color::getR() {
     return r;
@@ -87,3 +90,5 @@ void Color::setA(float x) {
         a = x;
     }
 }
+
+#endif
