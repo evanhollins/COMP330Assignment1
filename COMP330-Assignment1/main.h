@@ -24,7 +24,10 @@ using namespace std;
 #define BACKGROUND_B 0.33
 #define BACKGROUND_A 0.0
 
-Color background(BACKGROUND_R, BACKGROUND_G, BACKGROUND_B, BACKGROUND_A);
+#define HELICOPTER_SIZE 50
+
+Color * background;
+Helicopter * helicopter;
 
 
 #endif /* main_h */

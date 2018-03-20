@@ -1,46 +1,28 @@
 //
-//  Helicopter.h
+//  Helicopter.cpp
 //  COMP330-Assignment1
 //
-//  Created by Evan Hollins on 3/15/18.
+//  Created by Evan Hollins on 3/20/18.
 //  Copyright © 2018 Evan Hollins. All rights reserved.
 //
 
-#include <stdio.h>
-#include <iostream>
-#include <GLUT/GLUT.h>
-using namespace std;
-
-#include "Color.h"
-
-class Helicopter {
-private:
-    int x;
-    int y;
-    int angle;
-    int size;
-    
-public:
-    Helicopter(int _x, int _y, int _size);
-    void draw();
-    int getX();
-    int getY();
-    int getSize();
-    int getAngle();
-    void setX(int _x);
-    void setY(int _y);
-    void setSize(int _size);
-    void setAngle(int _angle);
-};
+#include "Helicopter.hpp"
 
 Helicopter::Helicopter(int _x, int _y, int _size) {
     setX(_x);
     setY(_y);
     setSize(_size);
+    bodyColor = new Color(1.0, 0.0, 0.0, 0.0);
 }
 
 void Helicopter::draw() {
-    cout << "Draw helicopter" << endl;
+    glColor3f(bodyColor->getR(), bodyColor->getG(), bodyColor->getB());
+    glBegin(GL_POLYGON);
+    glVertex2i(x+size/2, y+size/2);
+    glVertex2i(x-size/2, y+size/2);
+    glVertex2i(x-size/2, y-size/2);
+    glVertex2i(x+size/2, y-size/2);
+    glEnd();
 }
 
 int Helicopter::getX() {
