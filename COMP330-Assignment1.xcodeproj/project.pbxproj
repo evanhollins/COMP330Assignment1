@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		37B12DFB2060B203001DDC56 /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B12DF92060B203001DDC56 /* Test.cpp */; };
 		37B12DFE2060B258001DDC56 /* Helicopter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B12DFC2060B258001DDC56 /* Helicopter.cpp */; };
 		37C8C3312059E03400E1A9E2 /* Color.h in Sources */ = {isa = PBXBuildFile; fileRef = 37C8C3302059E03400E1A9E2 /* Color.h */; };
 		37E8B00C2059313500CE56BF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37E8B00B2059313500CE56BF /* main.cpp */; };
@@ -28,8 +27,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		37B12DF92060B203001DDC56 /* Test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Test.cpp; sourceTree = "<group>"; };
-		37B12DFA2060B203001DDC56 /* Test.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Test.hpp; sourceTree = "<group>"; };
 		37B12DFC2060B258001DDC56 /* Helicopter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Helicopter.cpp; sourceTree = "<group>"; };
 		37B12DFD2060B258001DDC56 /* Helicopter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Helicopter.hpp; sourceTree = "<group>"; };
 		37C8C3302059E03400E1A9E2 /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
@@ -78,8 +75,6 @@
 				37C8C3322059E4DE00E1A9E2 /* main.h */,
 				37B12DFC2060B258001DDC56 /* Helicopter.cpp */,
 				37B12DFD2060B258001DDC56 /* Helicopter.hpp */,
-				37B12DF92060B203001DDC56 /* Test.cpp */,
-				37B12DFA2060B203001DDC56 /* Test.hpp */,
 			);
 			path = "COMP330-Assignment1";
 			sourceTree = "<group>";
@@ -151,7 +146,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				37B12DFE2060B258001DDC56 /* Helicopter.cpp in Sources */,
-				37B12DFB2060B203001DDC56 /* Test.cpp in Sources */,
 				37C8C3312059E03400E1A9E2 /* Color.h in Sources */,
 				37E8B00C2059313500CE56BF /* main.cpp in Sources */,
 			);
