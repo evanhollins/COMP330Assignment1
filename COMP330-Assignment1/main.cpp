@@ -10,6 +10,10 @@
 
 void init(void)   /* initialization function  */
 {
+    // Enable blending
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
     background = new Color(BACKGROUND_R,
                            BACKGROUND_G,
                            BACKGROUND_B,
@@ -22,10 +26,14 @@ void init(void)   /* initialization function  */
                  background->getG(),
                  background->getB(),
                  background->getA()); /* set background color */
-    glColor3f(1.0, 1.0, 1.0); /* set drawing color to white */
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(0, 400, 0, 500); /* defines world window */
+    gluOrtho2D(0, WINDOW_SIZE_X, 0, WINDOW_SIZE_Y); /* defines world window */
+}
+
+void update(void) {
+    helicopter->update();
+    glutPostRedisplay();
 }
 
 void displayCB(void) /* display callback function,
@@ -33,8 +41,12 @@ void displayCB(void) /* display callback function,
                       whenever redisplay needed */
 {
     glClear( GL_COLOR_BUFFER_BIT); /* clear the screen window */
+    glClearColor(background->getR(),
+                 background->getG(),
+                 background->getB(),
+                 background->getA()); /* set background color */
     helicopter->draw();
-    glFlush(); /* Complete any pending operations */
+    glutSwapBuffers();
 }
 
 void keyCB(unsigned char key, int x, int y) /* keyboard callback function,
@@ -46,11 +58,12 @@ void keyCB(unsigned char key, int x, int y) /* keyboard callback function,
 
 int main(int argc, char *argv[]) {
     glutInit(&argc, argv); /* initialize GLUT system */
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(WINDOW_SIZE_X, WINDOW_SIZE_Y);
     glutCreateWindow("COMP330 Assignment 1"); /* create screen window */
     glutDisplayFunc(displayCB); /* register display callback function*/
     glutKeyboardFunc(keyCB); /* register keyboard callback function*/
+    glutIdleFunc(update);
     init();      /* call init */
     glutMainLoop(); /* show screen window, call display and
                      start processing events... */

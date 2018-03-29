@@ -70,3 +70,6 @@ void Color::setA(float x) {
     }
 }
 
+void Color::set() {
+    glColor4f(r, g, b, a);
+}

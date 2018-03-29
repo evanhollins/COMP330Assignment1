@@ -6,34 +6,46 @@
 //  Copyright © 2018 Evan Hollins. All rights reserved.
 //
 
+#ifndef Helicopter_hpp
+#define Helicopter_hpp
+
 #include <stdio.h>
+#include <string.h>
+#include <sstream>
 #include <iostream>
+#include <vector>
 #include <GLUT/GLUT.h>
 using namespace std;
 
+#include "Drawable.hpp"
 #include "Color.hpp"
-
-#ifndef Helicopter_hpp
-#define Helicopter_hpp
+#include "Circle.hpp"
+#include "Rectangle.hpp"
+#include "Propeller.hpp"
 
 class Helicopter {
 private:
     int x;
     int y;
-    int angle;
+    float angle;
     int size;
+    vector<Drawable *> shapes;
     Color * bodyColor;
+    Color * propColor;
     
 public:
     Helicopter(int _x, int _y, int _size);
+    ~Helicopter();
     void draw();
+    void update();
     int getX();
     int getY();
     int getSize();
-    int getAngle();
+    float getAngle();
     void setX(int _x);
     void setY(int _y);
     void setSize(int _size);
-    void setAngle(int _angle);
+    void setAngle(float _angle);
 };
+
 #endif

@@ -9,6 +9,12 @@
 #ifndef Color_hpp
 #define Color_hpp
 
+#include <stdio.h>
+#include <iostream>
+#include <GLUT/GLUT.h>
+using namespace std;
+
+
 class Color {
 private:
     float r;
@@ -17,6 +23,7 @@ private:
     float a;
 public:
     Color(float _r, float _g, float _b, float _a);
+    void update() {};
     float getR();
     float getG();
     float getB();
@@ -25,6 +32,7 @@ public:
     void setG(float x);
     void setB(float x);
     void setA(float x);
+    void set();
     
 };
 
