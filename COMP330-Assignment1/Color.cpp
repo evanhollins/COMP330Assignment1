@@ -1,34 +1,13 @@
 //
-//  Color.h
+//  Color.cpp
 //  COMP330-Assignment1
 //
-//  Created by Evan Hollins on 3/15/18.
+//  Created by Evan Hollins on 3/20/18.
 //  Copyright © 2018 Evan Hollins. All rights reserved.
 //
 
-#include <stdio.h>
+#include "Color.hpp"
 
-#ifndef Color_h
-#define Color_h
-
-class Color {
-private:
-    float r;
-    float g;
-    float b;
-    float a;
-public:
-    Color(float _r, float _g, float _b, float _a);
-    float getR();
-    float getG();
-    float getB();
-    float getA();
-    void setR(float x);
-    void setG(float x);
-    void setB(float x);
-    void setA(float x);
-    
-};
 Color::Color(float _r, float _g, float _b, float _a) {
     this->r = _r;
     this->g = _g;
@@ -91,4 +70,3 @@ void Color::setA(float x) {
     }
 }
 
-#endif

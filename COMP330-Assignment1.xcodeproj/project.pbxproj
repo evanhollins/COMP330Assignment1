@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		37B12DFE2060B258001DDC56 /* Helicopter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B12DFC2060B258001DDC56 /* Helicopter.cpp */; };
-		37C8C3312059E03400E1A9E2 /* Color.h in Sources */ = {isa = PBXBuildFile; fileRef = 37C8C3302059E03400E1A9E2 /* Color.h */; };
+		37B12E002060B322001DDC56 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B12DFF2060B322001DDC56 /* Color.cpp */; };
 		37E8B00C2059313500CE56BF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37E8B00B2059313500CE56BF /* main.cpp */; };
 		37E8B0152059314500CE56BF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E8B0132059314500CE56BF /* OpenGL.framework */; };
 		37E8B0162059314500CE56BF /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E8B0142059314500CE56BF /* GLUT.framework */; };
@@ -29,7 +29,8 @@
 /* Begin PBXFileReference section */
 		37B12DFC2060B258001DDC56 /* Helicopter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Helicopter.cpp; sourceTree = "<group>"; };
 		37B12DFD2060B258001DDC56 /* Helicopter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Helicopter.hpp; sourceTree = "<group>"; };
-		37C8C3302059E03400E1A9E2 /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
+		37B12DFF2060B322001DDC56 /* Color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
+		37C8C3302059E03400E1A9E2 /* Color.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Color.hpp; sourceTree = "<group>"; };
 		37C8C3322059E4DE00E1A9E2 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		37E8B0082059313500CE56BF /* COMP330-Assignment1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "COMP330-Assignment1"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37E8B00B2059313500CE56BF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -71,10 +72,11 @@
 			isa = PBXGroup;
 			children = (
 				37E8B00B2059313500CE56BF /* main.cpp */,
-				37C8C3302059E03400E1A9E2 /* Color.h */,
 				37C8C3322059E4DE00E1A9E2 /* main.h */,
-				37B12DFC2060B258001DDC56 /* Helicopter.cpp */,
+				37C8C3302059E03400E1A9E2 /* Color.hpp */,
+				37B12DFF2060B322001DDC56 /* Color.cpp */,
 				37B12DFD2060B258001DDC56 /* Helicopter.hpp */,
+				37B12DFC2060B258001DDC56 /* Helicopter.cpp */,
 			);
 			path = "COMP330-Assignment1";
 			sourceTree = "<group>";
@@ -146,7 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37B12DFE2060B258001DDC56 /* Helicopter.cpp in Sources */,
-				37C8C3312059E03400E1A9E2 /* Color.h in Sources */,
+				37B12E002060B322001DDC56 /* Color.cpp in Sources */,
 				37E8B00C2059313500CE56BF /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +263,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				GCC_NO_COMMON_BLOCKS = NO;
 				"OTHER_CPLUSPLUSFLAGS[arch=*]" = "-Wno-deprecated";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -270,6 +273,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				GCC_NO_COMMON_BLOCKS = NO;
 				"OTHER_CPLUSPLUSFLAGS[arch=*]" = "-Wno-deprecated";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -14,8 +14,8 @@
 #include <GLUT/GLUT.h>
 using namespace std;
 
-#include "Color.h"
-#include "Helicopter.h"
+#include "Color.hpp"
+#include "Helicopter.hpp"
 
 #define WINDOW_SIZE_X 500
 #define WINDOW_SIZE_Y 500

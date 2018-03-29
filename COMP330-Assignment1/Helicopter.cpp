@@ -5,8 +5,8 @@
 //  Created by Evan Hollins on 3/20/18.
 //  Copyright © 2018 Evan Hollins. All rights reserved.
 //
-
 #include "Helicopter.hpp"
+
 
 Helicopter::Helicopter(int _x, int _y, int _size) {
     setX(_x);
@@ -56,3 +56,4 @@ void Helicopter::setSize(int _size) {
 void Helicopter::setAngle(int _angle) {
     angle = _angle;
 }
+

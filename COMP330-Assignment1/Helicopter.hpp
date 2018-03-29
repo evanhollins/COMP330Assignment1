@@ -6,15 +6,15 @@
 //  Copyright © 2018 Evan Hollins. All rights reserved.
 //
 
-#ifndef Helicopter_hpp
-#define Helicopter_hpp
-
 #include <stdio.h>
 #include <iostream>
 #include <GLUT/GLUT.h>
 using namespace std;
 
-#include "Color.h"
+#include "Color.hpp"
+
+#ifndef Helicopter_hpp
+#define Helicopter_hpp
 
 class Helicopter {
 private:
@@ -36,5 +36,4 @@ public:
     void setSize(int _size);
     void setAngle(int _angle);
 };
-
-#endif /* Helicopter_hpp */
+#endif
