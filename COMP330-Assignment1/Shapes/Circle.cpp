@@ -8,16 +8,12 @@
 
 #include "Circle.hpp"
 
-OpenCircle::OpenCircle(int _x, int _y, float _radius, Color *  _color) {
-    x = _x;
-    y = _y;
-    radius = _radius;
-    color = _color;
-    iterations = 360;
+Circle::~Circle() {
+    delete color;
 }
 
-OpenCircle::~OpenCircle() {
-    delete color;
+bool Circle::contains(int _x, int _y) {
+    return sqrt((x - _x)^2 + (y - _y)^2) <= radius;
 }
 
 void OpenCircle::draw() {
@@ -34,18 +30,6 @@ void OpenCircle::draw() {
     
     glEnd();
     glPopMatrix();
-}
-
-ClosedCircle::ClosedCircle(int _x, int _y, float _radius, Color *  _color) {
-    x = _x;
-    y = _y;
-    radius = _radius;
-    color = _color;
-    iterations = 360;
-}
-
-ClosedCircle::~ClosedCircle() {
-    delete color;
 }
 
 void ClosedCircle::draw() {

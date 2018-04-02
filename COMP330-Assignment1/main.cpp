@@ -8,6 +8,11 @@
 
 #include "main.h"
 
+struct Globals {
+    int mouse_x;
+    int mouse_y;
+} globals;
+
 void init(void)   /* initialization function  */
 {
     // Enable blending
@@ -31,9 +36,13 @@ void init(void)   /* initialization function  */
     gluOrtho2D(0, WINDOW_SIZE_X, 0, WINDOW_SIZE_Y); /* defines world window */
 }
 
-void update(void) {
+void update(int v) {
+    helicopter->setAngle(-atan2(globals.mouse_y - helicopter->getY(),
+                                globals.mouse_x - helicopter->getX())
+                         * 180 / M_PI);
     helicopter->update();
     glutPostRedisplay();
+    glutTimerFunc(MILLISECONDS_PER_SECOND / FRAMERATE, update, 0);
 }
 
 void displayCB(void) /* display callback function,
@@ -52,8 +61,15 @@ void displayCB(void) /* display callback function,
 void keyCB(unsigned char key, int x, int y) /* keyboard callback function,
                                              called on key press */
 {
-    if (key == 'q')
+    if (key == 'q') {
         exit(0);
+    }
+    
+}
+
+void mouse(int x, int y) {
+    globals.mouse_x = x;
+    globals.mouse_y = y;
 }
 
 int main(int argc, char *argv[]) {
@@ -63,7 +79,9 @@ int main(int argc, char *argv[]) {
     glutCreateWindow("COMP330 Assignment 1"); /* create screen window */
     glutDisplayFunc(displayCB); /* register display callback function*/
     glutKeyboardFunc(keyCB); /* register keyboard callback function*/
-    glutIdleFunc(update);
+    glutPassiveMotionFunc(mouse);
+    glutMotionFunc(mouse);
+    glutTimerFunc(0, update, 0);     // First timer call immediately
     init();      /* call init */
     glutMainLoop(); /* show screen window, call display and
                      start processing events... */

@@ -15,9 +15,9 @@
 #include <math.h>
 
 #include "Color.hpp"
-#include "Drawable.hpp"
+#include "Shape.hpp"
 
-class OpenCircle: public Drawable {
+class Circle : public Shape {
 public:
     float radius;
     Color * color;
@@ -27,25 +27,31 @@ public:
     const float TWICEPI = 3.14159*2;
     int iterations;
     
-    OpenCircle(int _x, int _y, float _radius, Color * _color);
-    ~OpenCircle();
+    Circle(int _x, int _y, float _radius, Color * _color): x(_x), y(_y), radius(_radius), color(_color) {
+        iterations = 360;
+    };
+    ~Circle();
     virtual void draw();
+    virtual void update() {};
+    bool contains(int _x, int _y);
+};
+
+
+class OpenCircle: public Circle {
+public:
+    
+    OpenCircle(int _x, int _y, float _radius, Color * _color): Circle(_x, _y, _radius, _color) {};
+    ~OpenCircle();
+    void draw();
     void update() {};
 };
 
-class ClosedCircle: public Drawable {
+class ClosedCircle: public Circle {
 public:
-    float radius;
-    Color * color;
-    int x;
-    int y;
-    const float DEG2RAD = 3.14159/180;
-    const float TWICEPI = 3.14159*2;
-    int iterations;
-    
-    ClosedCircle(int _x, int _y, float _radius, Color * _color);
+    ClosedCircle(int _x, int _y, float _radius, Color * _color): Circle(_x, _y, _radius, _color) {};
     ~ClosedCircle();
-    virtual void draw();
+    void draw();
+    void update() {};
 };
 
 #endif /* Circle_hpp */

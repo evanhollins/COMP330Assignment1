@@ -13,11 +13,11 @@
 #include <iostream>
 using namespace std;
 
-#include "Drawable.hpp"
+#include "Shape.hpp"
 #include "Color.hpp"
 #include "Circle.hpp"
 
-class Propellor: public Drawable {
+class Propellor: public Shape {
 public:
     int x;
     int y;

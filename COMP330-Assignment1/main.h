@@ -17,6 +17,8 @@ using namespace std;
 #include "Color.hpp"
 #include "Helicopter.hpp"
 
+#define FRAMERATE 60 // Frames per second
+#define MILLISECONDS_PER_SECOND 1000
 #define WINDOW_SIZE_X 500
 #define WINDOW_SIZE_Y 500
 #define BACKGROUND_R 0.78

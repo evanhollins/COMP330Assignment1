@@ -14,9 +14,9 @@
 using namespace std;
 
 #include "Color.hpp"
-#include "Drawable.hpp"
+#include "Shape.hpp"
 
-class Rectangle: public Drawable {
+class Rectangle: public Shape {
 public:
     int size_x;
     int size_y;
@@ -27,8 +27,9 @@ public:
     
     Rectangle(int _x, int _y, int _size_x, int _size_y, Color * _color);
     ~Rectangle();
-    virtual void draw();
+    void draw();
     void update() {};
+    bool contains(int _x, int _y);
 };
 
 #endif /* Rectangle_hpp */

@@ -6,19 +6,19 @@
 //  Copyright © 2018 Evan Hollins. All rights reserved.
 //
 
-#ifndef Drawable_hpp
-#define Drawable_hpp
+#ifndef Shape_hpp
+#define Shape_hpp
 
 #include <stdio.h>
 
 #include "Color.hpp"
 
-class Drawable {
+class Shape {
 public:
-    virtual ~Drawable() {};
+    virtual ~Shape() {};
     virtual void draw() {};
     virtual void update() {};
-    
+    virtual bool contains(int _x, int _y) {return false;};
 };
 
-#endif /* Drawable_hpp */
+#endif /* Shape_hpp */

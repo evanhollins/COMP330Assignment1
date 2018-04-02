@@ -14,6 +14,7 @@ Rectangle::Rectangle(int _x, int _y, int _size_x, int _size_y, Color * _color) {
     size_x = _size_x;
     size_y = _size_y;
     color = _color;
+    angle = 0;
 }
 
 Rectangle::~Rectangle() {
@@ -32,4 +33,8 @@ void Rectangle::draw() {
     glVertex2i(size_x/2, -size_y/2);
     glEnd();
     glPopMatrix();
+}
+
+bool Rectangle::contains(int _x, int _y) {
+    return abs(x - _x)/2 <= size_x && abs(y - _y)/2 <= size_y;
 }

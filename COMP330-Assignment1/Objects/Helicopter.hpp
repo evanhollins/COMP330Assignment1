@@ -17,7 +17,7 @@
 #include <GLUT/GLUT.h>
 using namespace std;
 
-#include "Drawable.hpp"
+#include "Shape.hpp"
 #include "Color.hpp"
 #include "Circle.hpp"
 #include "Rectangle.hpp"
@@ -27,9 +27,10 @@ class Helicopter {
 private:
     int x;
     int y;
-    float angle;
+    int angle;
     int size;
-    vector<Drawable *> shapes;
+    vector<Shape *> shapes;
+    Propellor * propellor;
     Color * bodyColor;
     Color * propColor;
     
@@ -41,11 +42,11 @@ public:
     int getX();
     int getY();
     int getSize();
-    float getAngle();
+    int getAngle();
     void setX(int _x);
     void setY(int _y);
     void setSize(int _size);
-    void setAngle(float _angle);
+    void setAngle(int _angle);
 };
 
 #endif

@@ -12,7 +12,7 @@
 		37B12E002060B322001DDC56 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B12DFF2060B322001DDC56 /* Color.cpp */; };
 		37E5FBDE206CAE0100C6977D /* Circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37E5FBDC206CAE0100C6977D /* Circle.cpp */; };
 		37E5FBE1206CBF9900C6977D /* Rectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37E5FBDF206CBF9900C6977D /* Rectangle.cpp */; };
-		37E5FBE5206CCDF500C6977D /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37E5FBE3206CCDF500C6977D /* Drawable.cpp */; };
+		37E5FBE5206CCDF500C6977D /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37E5FBE3206CCDF500C6977D /* Shape.cpp */; };
 		37E8B00C2059313500CE56BF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37E8B00B2059313500CE56BF /* main.cpp */; };
 		37E8B0152059314500CE56BF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E8B0132059314500CE56BF /* OpenGL.framework */; };
 		37E8B0162059314500CE56BF /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E8B0142059314500CE56BF /* GLUT.framework */; };
@@ -42,8 +42,8 @@
 		37E5FBDD206CAE0100C6977D /* Circle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Circle.hpp; sourceTree = "<group>"; };
 		37E5FBDF206CBF9900C6977D /* Rectangle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Rectangle.cpp; sourceTree = "<group>"; };
 		37E5FBE0206CBF9900C6977D /* Rectangle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Rectangle.hpp; sourceTree = "<group>"; };
-		37E5FBE3206CCDF500C6977D /* Drawable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Drawable.cpp; sourceTree = "<group>"; };
-		37E5FBE4206CCDF500C6977D /* Drawable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Drawable.hpp; sourceTree = "<group>"; };
+		37E5FBE3206CCDF500C6977D /* Shape.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shape.cpp; sourceTree = "<group>"; };
+		37E5FBE4206CCDF500C6977D /* Shape.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shape.hpp; sourceTree = "<group>"; };
 		37E8B0082059313500CE56BF /* COMP330-Assignment1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "COMP330-Assignment1"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37E8B00B2059313500CE56BF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		37E8B0132059314500CE56BF /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -79,8 +79,8 @@
 			children = (
 				37C8C3302059E03400E1A9E2 /* Color.hpp */,
 				37B12DFF2060B322001DDC56 /* Color.cpp */,
-				37E5FBE3206CCDF500C6977D /* Drawable.cpp */,
-				37E5FBE4206CCDF500C6977D /* Drawable.hpp */,
+				37E5FBE3206CCDF500C6977D /* Shape.cpp */,
+				37E5FBE4206CCDF500C6977D /* Shape.hpp */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -194,7 +194,7 @@
 				37B12DFE2060B258001DDC56 /* Helicopter.cpp in Sources */,
 				37E5FBDE206CAE0100C6977D /* Circle.cpp in Sources */,
 				37B12E002060B322001DDC56 /* Color.cpp in Sources */,
-				37E5FBE5206CCDF500C6977D /* Drawable.cpp in Sources */,
+				37E5FBE5206CCDF500C6977D /* Shape.cpp in Sources */,
 				375BA215206CFFBA000C8A7A /* Propeller.cpp in Sources */,
 				37E5FBE1206CBF9900C6977D /* Rectangle.cpp in Sources */,
 				37E8B00C2059313500CE56BF /* main.cpp in Sources */,
