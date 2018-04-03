@@ -10,6 +10,9 @@
 		375BA215206CFFBA000C8A7A /* Propeller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 375BA213206CFFBA000C8A7A /* Propeller.cpp */; };
 		37B12DFE2060B258001DDC56 /* Helicopter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B12DFC2060B258001DDC56 /* Helicopter.cpp */; };
 		37B12E002060B322001DDC56 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B12DFF2060B322001DDC56 /* Color.cpp */; };
+		37B343AE2072FF320085F6FE /* MathUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B343AC2072FF320085F6FE /* MathUtil.cpp */; };
+		37B343B120731FFF0085F6FE /* Lake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B343AF20731FFF0085F6FE /* Lake.cpp */; };
+		37B343B42073407F0085F6FE /* WaterBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B343B22073407F0085F6FE /* WaterBar.cpp */; };
 		37E5FBDE206CAE0100C6977D /* Circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37E5FBDC206CAE0100C6977D /* Circle.cpp */; };
 		37E5FBE1206CBF9900C6977D /* Rectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37E5FBDF206CBF9900C6977D /* Rectangle.cpp */; };
 		37E5FBE5206CCDF500C6977D /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37E5FBE3206CCDF500C6977D /* Shape.cpp */; };
@@ -36,6 +39,12 @@
 		37B12DFC2060B258001DDC56 /* Helicopter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Helicopter.cpp; sourceTree = "<group>"; };
 		37B12DFD2060B258001DDC56 /* Helicopter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Helicopter.hpp; sourceTree = "<group>"; };
 		37B12DFF2060B322001DDC56 /* Color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
+		37B343AC2072FF320085F6FE /* MathUtil.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MathUtil.cpp; sourceTree = "<group>"; };
+		37B343AD2072FF320085F6FE /* MathUtil.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MathUtil.hpp; sourceTree = "<group>"; };
+		37B343AF20731FFF0085F6FE /* Lake.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Lake.cpp; sourceTree = "<group>"; };
+		37B343B020731FFF0085F6FE /* Lake.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Lake.hpp; sourceTree = "<group>"; };
+		37B343B22073407F0085F6FE /* WaterBar.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WaterBar.cpp; sourceTree = "<group>"; };
+		37B343B32073407F0085F6FE /* WaterBar.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WaterBar.hpp; sourceTree = "<group>"; };
 		37C8C3302059E03400E1A9E2 /* Color.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Color.hpp; sourceTree = "<group>"; };
 		37C8C3322059E4DE00E1A9E2 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		37E5FBDC206CAE0100C6977D /* Circle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Circle.cpp; sourceTree = "<group>"; };
@@ -77,8 +86,10 @@
 		375BA217206D1D79000C8A7A /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				37C8C3302059E03400E1A9E2 /* Color.hpp */,
+				37B343AC2072FF320085F6FE /* MathUtil.cpp */,
+				37B343AD2072FF320085F6FE /* MathUtil.hpp */,
 				37B12DFF2060B322001DDC56 /* Color.cpp */,
+				37C8C3302059E03400E1A9E2 /* Color.hpp */,
 				37E5FBE3206CCDF500C6977D /* Shape.cpp */,
 				37E5FBE4206CCDF500C6977D /* Shape.hpp */,
 			);
@@ -88,10 +99,14 @@
 		375BA218206D1D8F000C8A7A /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				37B12DFD2060B258001DDC56 /* Helicopter.hpp */,
 				37B12DFC2060B258001DDC56 /* Helicopter.cpp */,
+				37B12DFD2060B258001DDC56 /* Helicopter.hpp */,
 				375BA213206CFFBA000C8A7A /* Propeller.cpp */,
 				375BA214206CFFBA000C8A7A /* Propeller.hpp */,
+				37B343AF20731FFF0085F6FE /* Lake.cpp */,
+				37B343B020731FFF0085F6FE /* Lake.hpp */,
+				37B343B22073407F0085F6FE /* WaterBar.cpp */,
+				37B343B32073407F0085F6FE /* WaterBar.hpp */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -191,13 +206,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37B343B120731FFF0085F6FE /* Lake.cpp in Sources */,
 				37B12DFE2060B258001DDC56 /* Helicopter.cpp in Sources */,
 				37E5FBDE206CAE0100C6977D /* Circle.cpp in Sources */,
 				37B12E002060B322001DDC56 /* Color.cpp in Sources */,
 				37E5FBE5206CCDF500C6977D /* Shape.cpp in Sources */,
 				375BA215206CFFBA000C8A7A /* Propeller.cpp in Sources */,
+				37B343AE2072FF320085F6FE /* MathUtil.cpp in Sources */,
 				37E5FBE1206CBF9900C6977D /* Rectangle.cpp in Sources */,
 				37E8B00C2059313500CE56BF /* main.cpp in Sources */,
+				37B343B42073407F0085F6FE /* WaterBar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

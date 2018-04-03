@@ -21,13 +21,11 @@ void OpenCircle::draw() {
     glPushMatrix();
     glTranslatef(x, y, 0);
     glBegin(GL_LINE_LOOP);
-    
     for (int i=0; i < iterations; i++)
     {
-        float degInRad = i*DEG2RAD;
+        float degInRad = rad(i);
         glVertex2f(cos(degInRad)*radius,sin(degInRad)*radius);
     }
-    
     glEnd();
     glPopMatrix();
 }

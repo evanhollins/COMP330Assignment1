@@ -23,6 +23,7 @@ private:
     float a;
 public:
     Color(float _r, float _g, float _b, float _a);
+    Color(float _r, float _g, float _b);
     void update() {};
     float getR();
     float getG();

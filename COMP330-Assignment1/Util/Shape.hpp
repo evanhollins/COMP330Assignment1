@@ -16,9 +16,9 @@
 class Shape {
 public:
     virtual ~Shape() {};
-    virtual void draw() {};
-    virtual void update() {};
-    virtual bool contains(int _x, int _y) {return false;};
+    virtual void draw() =0;
+    virtual void update()=0;
+    virtual bool contains(int _x, int _y) =0;
 };
 
 #endif /* Shape_hpp */

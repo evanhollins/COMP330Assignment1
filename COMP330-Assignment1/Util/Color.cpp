@@ -14,6 +14,14 @@ Color::Color(float _r, float _g, float _b, float _a) {
     this->b = _b;
     this->a = _a;
 }
+
+Color::Color(float _r, float _g, float _b) {
+    this->r = _r;
+    this->g = _g;
+    this->b = _b;
+    this->a = 1.0;
+}
+
 float Color::getR() {
     return r;
 }

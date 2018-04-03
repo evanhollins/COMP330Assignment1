@@ -27,20 +27,37 @@ void init(void)   /* initialization function  */
                                 WINDOW_SIZE_Y/2,
                                 HELICOPTER_SIZE);
     
+    lake = new Lake(WINDOW_SIZE_X - WINDOW_SIZE_X / 10,
+                    WINDOW_SIZE_Y - WINDOW_SIZE_Y / 10,
+                    40,
+                    new Color(0.44, 0.63, 0.93));
+    
     glClearColor(background->getR(),
                  background->getG(),
                  background->getB(),
                  background->getA()); /* set background color */
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(0, WINDOW_SIZE_X, 0, WINDOW_SIZE_Y); /* defines world window */
+    gluOrtho2D(0, WINDOW_SIZE_X, WINDOW_SIZE_Y, 0); /* defines world window */
 }
 
 void update(int v) {
-    helicopter->setAngle(-atan2(globals.mouse_y - helicopter->getY(),
-                                globals.mouse_x - helicopter->getX())
-                         * 180 / M_PI);
+    // If mouse is in screen
+    if(globals.mouse_x > 0 && globals.mouse_y > 0) {
+        
+        helicopter->setTargetAngle(deg(atan2(globals.mouse_y - helicopter->getY(),
+                                             globals.mouse_x - helicopter->getX())));
+        
+        helicopter->setSpeed(sqrt(pow(globals.mouse_y - helicopter->getY(), 2.0) +
+                                  pow(globals.mouse_x - helicopter->getX(), 2.0)));
+        helicopter->setTargetX(globals.mouse_x);
+        helicopter->setTargetY(globals.mouse_y);
+        
+    } else {
+        helicopter->setSpeed(0);
+    }
     helicopter->update();
+    
     glutPostRedisplay();
     glutTimerFunc(MILLISECONDS_PER_SECOND / FRAMERATE, update, 0);
 }
@@ -54,6 +71,7 @@ void displayCB(void) /* display callback function,
                  background->getG(),
                  background->getB(),
                  background->getA()); /* set background color */
+    lake->draw();
     helicopter->draw();
     glutSwapBuffers();
 }
@@ -68,8 +86,14 @@ void keyCB(unsigned char key, int x, int y) /* keyboard callback function,
 }
 
 void mouse(int x, int y) {
-    globals.mouse_x = x;
-    globals.mouse_y = y;
+    // If mouse is out of screen, set to be negative.
+    if(WINDOW_SIZE_X - x >= 0 && WINDOW_SIZE_Y - y >= 0) {
+        globals.mouse_x = x;
+        globals.mouse_y = y;
+    } else {
+        globals.mouse_x = -1;
+        globals.mouse_y = -1;
+    }
 }
 
 int main(int argc, char *argv[]) {

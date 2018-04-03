@@ -30,8 +30,9 @@ public:
     
     Propellor(int _x, int _y, int _radius, Color * _color);
     ~Propellor();
-    virtual void draw();
+    void draw();
     void update();
+    bool contains(int _x, int _y) {return false;}
 };
 
 
