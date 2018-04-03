@@ -14,9 +14,10 @@ WaterBar::WaterBar(int _x, int _y, int _width, int _height, Color * _color) {
     width = _width;
     height = _height;
     color = _color;
-    filled = 0;
+    filled = WATER_BAR_MIN_FILLED;
     
-    shapes.push_back(new Rectangle(x, y, size, color));
+    background = new Rectangle(x, y, width, height, new Color(0, 0, 0));
+    foreground = new Rectangle(getFilledBarX(), y, getFilledBarWidth(), height - PADDING, color);
 }
 
 WaterBar::~WaterBar() {
@@ -24,7 +25,40 @@ WaterBar::~WaterBar() {
 }
 
 void WaterBar::draw() {
-    for(int i = 0; i < shapes.size(); i++) {
-        shapes[i]->draw();
-    }
+    background->draw();
+    foreground->draw();
+}
+
+float WaterBar::getFilledBarWidth() {
+    return (width - (PADDING * 2)) * filled;
+}
+
+float WaterBar::getFilledBarX() {
+    return ((width - (PADDING * 2)) * (1 - filled)) / 2 + x;
+}
+
+void WaterBar::setFilled(float _filled) {
+    filled = fmax(fmin(_filled, WATER_BAR_MAX_FILLED), WATER_BAR_MIN_FILLED);
+    foreground->x = getFilledBarX();
+    foreground->size_x = round(getFilledBarWidth());
+}
+
+float WaterBar::getFilled() {
+    return filled;
+}
+
+void WaterBar::increaseFilled(float amount) {
+    setFilled(filled + amount);
+}
+
+void WaterBar::decreaseFilled(float amount) {
+    setFilled(filled - amount);
+}
+
+bool WaterBar::isFull() {
+    return filled == WATER_BAR_MAX_FILLED;
+}
+
+bool WaterBar::isEmpty() {
+    return filled == WATER_BAR_MIN_FILLED;
 }

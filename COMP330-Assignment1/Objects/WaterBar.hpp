@@ -11,14 +11,20 @@
 
 #include <stdio.h>
 #include <vector>
+#include <math.h>
 
 #include "Color.hpp"
 #include "Shape.hpp"
 #include "Rectangle.hpp"
 
+#define WATER_BAR_MIN_FILLED 0.05
+#define WATER_BAR_MAX_FILLED 1
+#define PADDING 2
+
 class WaterBar: public Shape {
 private:
-    vector<Shape *> shapes;
+    Rectangle * background;
+    Rectangle * foreground;
     float filled;
 public:
     int x;
@@ -30,6 +36,14 @@ public:
     ~WaterBar();
     void draw();
     void update() {};
-    bool contains() { return false; };
+    bool contains(int _x, int _y) { return false; };
+    void setFilled(float _filled);
+    float getFilled();
+    float getFilledBarWidth();
+    float getFilledBarX();
+    void increaseFilled(float amount);
+    void decreaseFilled(float amount);
+    bool isFull();
+    bool isEmpty();
 };
 #endif /* WaterBar_hpp */

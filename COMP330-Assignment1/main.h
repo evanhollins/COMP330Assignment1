@@ -17,6 +17,7 @@ using namespace std;
 #include "Color.hpp"
 #include "Helicopter.hpp"
 #include "Lake.hpp"
+#include "WaterBar.hpp"
 
 #define FRAMERATE 60 // Frames per second
 #define MILLISECONDS_PER_SECOND 1000
@@ -29,9 +30,13 @@ using namespace std;
 
 #define HELICOPTER_SIZE 50
 
+#define WATER_FILL_RATE 0.01
+#define WATER_RELEASE_RATE 0.03
+
 Color * background;
 Helicopter * helicopter;
 Lake * lake;
+WaterBar * waterBar;
 
 
 #endif /* main_h */

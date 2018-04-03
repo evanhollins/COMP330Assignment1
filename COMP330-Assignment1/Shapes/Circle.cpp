@@ -13,7 +13,7 @@ Circle::~Circle() {
 }
 
 bool Circle::contains(int _x, int _y) {
-    return sqrt((x - _x)^2 + (y - _y)^2) <= radius;
+    return sqrt(pow((x - _x),2) + pow((y - _y),2)) <= radius;
 }
 
 void OpenCircle::draw() {

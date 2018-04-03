@@ -9,8 +9,9 @@
 #include "main.h"
 
 struct Globals {
-    int mouse_x;
-    int mouse_y;
+    int mouse_x = -1;
+    int mouse_y = -1;
+    bool releasingWater = false;
 } globals;
 
 void init(void)   /* initialization function  */
@@ -31,6 +32,11 @@ void init(void)   /* initialization function  */
                     WINDOW_SIZE_Y - WINDOW_SIZE_Y / 10,
                     40,
                     new Color(0.44, 0.63, 0.93));
+    waterBar = new WaterBar(WINDOW_SIZE_X - WINDOW_SIZE_X / 10,
+                            WINDOW_SIZE_Y / 20,
+                            90,
+                            20,
+                            new Color(0.44, 0.63, 0.93));
     
     glClearColor(background->getR(),
                  background->getG(),
@@ -53,6 +59,14 @@ void update(int v) {
         helicopter->setTargetX(globals.mouse_x);
         helicopter->setTargetY(globals.mouse_y);
         
+        if(lake->contains(helicopter->getX(), helicopter->getY())) {
+            waterBar->increaseFilled(WATER_FILL_RATE);
+        } else {
+            if(globals.releasingWater && !waterBar->isEmpty()) {
+                waterBar->decreaseFilled(WATER_RELEASE_RATE);
+            }
+        }
+        
     } else {
         helicopter->setSpeed(0);
     }
@@ -72,17 +86,34 @@ void displayCB(void) /* display callback function,
                  background->getB(),
                  background->getA()); /* set background color */
     lake->draw();
+    waterBar->draw();
     helicopter->draw();
     glutSwapBuffers();
 }
-
-void keyCB(unsigned char key, int x, int y) /* keyboard callback function,
-                                             called on key press */
-{
-    if (key == 'q') {
-        exit(0);
+/* keyboard callback function,
+ called on key press */
+void keyCB(unsigned char key, int x, int y) {
+    switch (key) {
+        case 'q':
+            exit(0);
+            break;
+        case ' ':
+            globals.releasingWater = true;
+            break;
+        default:
+            break;
     }
-    
+}
+
+void keyUp(unsigned char key, int x, int y) {
+    switch (key) {
+        case ' ':
+            globals.releasingWater = false;
+            break;
+            
+        default:
+            break;
+    }
 }
 
 void mouse(int x, int y) {
@@ -103,6 +134,7 @@ int main(int argc, char *argv[]) {
     glutCreateWindow("COMP330 Assignment 1"); /* create screen window */
     glutDisplayFunc(displayCB); /* register display callback function*/
     glutKeyboardFunc(keyCB); /* register keyboard callback function*/
+    glutKeyboardUpFunc(keyUp);
     glutPassiveMotionFunc(mouse);
     glutMotionFunc(mouse);
     glutTimerFunc(0, update, 0);     // First timer call immediately
