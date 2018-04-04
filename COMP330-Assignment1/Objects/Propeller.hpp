@@ -23,6 +23,7 @@ public:
     int y;
     int radius;
     int angle;
+    bool spinning;
     Color * color;
     Color * backgroundColor;
     ClosedCircle * propBackground;
@@ -33,6 +34,8 @@ public:
     void draw();
     void update();
     bool contains(int _x, int _y) {return false;}
+    void spin();
+    void stop();
 };
 
 

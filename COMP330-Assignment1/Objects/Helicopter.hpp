@@ -37,6 +37,7 @@ private:
     int targetAngle;
     int size;
     int speed;
+    bool flying;
     vector<Shape *> shapes;
     Propellor * propellor;
     Line * path;
@@ -56,6 +57,8 @@ public:
     int getTargetAngle();
     int getSize();
     int getAngle();
+    float distanceTo(int _x, int _y);
+    bool contains(int _x, int _y);
     void setX(int _x);
     void setY(int _y);
     void setTargetX(int _x);
@@ -65,6 +68,8 @@ public:
     void setTargetAngle(int _angle);
     void setSpeed(int _speed);
     int getSpeed();
+    void land();
+    void takeoff();
 };
 
 #endif

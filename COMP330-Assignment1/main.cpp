@@ -9,8 +9,12 @@
 #include "main.h"
 
 struct Globals {
-    int mouse_x = -1;
-    int mouse_y = -1;
+    int mouseX = -1;
+    int mouseY = -1;
+    int mouseDownX = -1;
+    int mouseDownY = -1;
+    bool draggingMouse = false;
+    bool draggingMouseStartedInHelicopter = false;
     bool releasingWater = false;
     bool running = true;
 } globals;
@@ -58,28 +62,26 @@ void update(int v) {
         return;
     }
     
-    // If mouse is in screen
-    if(globals.mouse_x > 0 && globals.mouse_y > 0) {
+    if(globals.draggingMouse && globals.draggingMouseStartedInHelicopter) {
         
-        helicopter->setTargetAngle(deg(atan2(globals.mouse_y - helicopter->getY(),
-                                             globals.mouse_x - helicopter->getX())));
+        helicopter->setTargetAngle(deg(atan2(globals.mouseY - helicopter->getY(),
+                                             globals.mouseX - helicopter->getX())));
         
-        helicopter->setSpeed(sqrt(pow(globals.mouse_y - helicopter->getY(), 2.0) +
-                                  pow(globals.mouse_x - helicopter->getX(), 2.0)));
-        helicopter->setTargetX(globals.mouse_x);
-        helicopter->setTargetY(globals.mouse_y);
+        helicopter->setSpeed(sqrt(pow(globals.mouseY - helicopter->getY(), 2.0) +
+                                  pow(globals.mouseX - helicopter->getX(), 2.0)));
+        helicopter->setTargetX(globals.mouseX);
+        helicopter->setTargetY(globals.mouseY);
         
-        if(lake->contains(helicopter->getX(), helicopter->getY())) {
-            waterBar->increaseFilled(WATER_FILL_RATE);
-        } else {
-            if(globals.releasingWater && !waterBar->isEmpty()) {
-                waterBar->decreaseFilled(WATER_RELEASE_RATE);
-            }
-        }
-        
-    } else {
-        helicopter->setSpeed(0);
     }
+    
+    if(lake->contains(helicopter->getX(), helicopter->getY())) {
+        waterBar->increaseFilled(WATER_FILL_RATE);
+    } else {
+        if(globals.releasingWater && !waterBar->isEmpty()) {
+            waterBar->decreaseFilled(WATER_RELEASE_RATE);
+        }
+    }
+    
     helicopter->update();
     
     glutPostRedisplay();
@@ -140,15 +142,34 @@ void menuCB(int menu) {
     globals.running = true;
 }
 
-void mouse(int x, int y) {
-    // If mouse is out of screen, set to be negative.
-    if(WINDOW_SIZE_X - x >= 0 && WINDOW_SIZE_Y - y >= 0) {
-        globals.mouse_x = x;
-        globals.mouse_y = y;
-    } else {
-        globals.mouse_x = -1;
-        globals.mouse_y = -1;
+void mouseMotion(int x, int y) {
+    if(globals.mouseDownX >= 0 && globals.mouseDownY >= 0) {
+        if(sqrt(
+                pow(globals.mouseDownX - x, 2) + pow(globals.mouseDownY - y, 2))
+           > MOUSE_CLICK_DEADBAND) {
+            globals.draggingMouse = true;
+            if(helicopter->contains(globals.mouseDownX, globals.mouseDownY)) {
+                globals.draggingMouseStartedInHelicopter = true;
+            }
+        }
     }
+    globals.mouseX = x;
+    globals.mouseY = y;
+}
+
+void mousePassiveMotion(int x, int y) {
+    // If mouse is out of screen, set to be negative.
+    if(WINDOW_SIZE_X - x >= 0 && WINDOW_SIZE_Y - y >= 0 && x >= 0 && y >= 0) {
+        globals.mouseX = x;
+        globals.mouseY = y;
+    } else {
+        globals.mouseX = -1;
+        globals.mouseY = -1;
+    }
+}
+
+void handleClick(int x, int y) {
+    
 }
 
 void mouseClicked(int button, int state, int x, int y) {
@@ -157,7 +178,18 @@ void mouseClicked(int button, int state, int x, int y) {
             cout << "right button" << endl;
             break;
         case GLUT_LEFT_BUTTON:
-            cout << "left button" << endl;
+            if(state == GLUT_DOWN) {
+                globals.mouseDownX = x;
+                globals.mouseDownY = y;
+            } else if(state == GLUT_UP) {
+                if(!globals.draggingMouse) {
+                    handleClick(x, y);
+                }
+                globals.mouseDownX = -1;
+                globals.mouseDownY = -1;
+                globals.draggingMouse = false;
+                globals.draggingMouseStartedInHelicopter = false;
+            }
             break;
             
         default:
@@ -173,8 +205,8 @@ int main(int argc, char *argv[]) {
     glutDisplayFunc(displayCB); /* register display callback function*/
     glutKeyboardFunc(keyCB); /* register keyboard callback function*/
     glutKeyboardUpFunc(keyUp);
-    glutPassiveMotionFunc(mouse);
-    glutMotionFunc(mouse);
+    glutPassiveMotionFunc(mousePassiveMotion);
+    glutMotionFunc(mouseMotion);
     glutMouseFunc(mouseClicked);
     
     // Right Click Menu

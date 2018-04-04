@@ -14,6 +14,7 @@ Helicopter::Helicopter(int _x, int _y, int _size) {
     setSize(_size);
     setAngle(0);
     setTargetAngle(0);
+    flying = true;
     bodyColor = new Color(0.2, 0.2, 0.2);
     propColor = new Color(0.5, 0.5, 0.5);
     pathColor = new Color(1.0, 0.0, 0.0);
@@ -132,5 +133,28 @@ void Helicopter::setSpeed(int _speed) {
 
 int Helicopter::getSpeed() {
     return speed;
+}
+
+float Helicopter::distanceTo(int _x, int _y) {
+    return location->distanceTo(_x, _y);
+}
+
+bool Helicopter::contains(int _x, int _y) {
+    for(int i = 0; i < shapes.size(); i++) {
+        if(shapes[i]->contains(_x - location->x, _y - location->y)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+void Helicopter::land() {
+    flying = false;
+    propellor->stop();
+}
+
+void Helicopter::takeoff() {
+    flying = true;
+    propellor->spin();
 }
 

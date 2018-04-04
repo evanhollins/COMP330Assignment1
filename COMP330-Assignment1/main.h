@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <GLUT/GLUT.h>
+#include <math.h>
 using namespace std;
 
 #include "Color.hpp"
@@ -22,6 +23,7 @@ using namespace std;
 
 #define FRAMERATE 60 // Frames per second
 #define MILLISECONDS_PER_SECOND 1000
+#define MOUSE_CLICK_DEADBAND 10
 #define WINDOW_SIZE_X 500
 #define WINDOW_SIZE_Y 500
 #define BACKGROUND_R 0.78

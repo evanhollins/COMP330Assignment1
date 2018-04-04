@@ -14,6 +14,7 @@ Propellor::Propellor(int _x, int _y, int _radius, Color * _color) {
     radius = _radius;
     color = _color;
     angle = 0;
+    spinning = true;
     backgroundColor = new Color(color->getR(), color->getG(), color->getB(), 0.2);
     propBackground = new ClosedCircle(x, y, radius, backgroundColor);
 }
@@ -22,7 +23,9 @@ Propellor::~Propellor() {
 }
 
 void Propellor::update() {
-    angle = (angle + 5) % 360;
+    if(spinning) {
+        angle = (angle + 5) % 360;
+    }
 }
 
 void Propellor::draw() {
@@ -45,4 +48,12 @@ void Propellor::draw() {
     
     glPopMatrix();
     
+}
+
+void Propellor::spin() {
+    spinning = true;
+}
+
+void Propellor::stop() {
+    spinning = false;
 }
