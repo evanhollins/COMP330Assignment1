@@ -12,7 +12,13 @@ struct Globals {
     int mouse_x = -1;
     int mouse_y = -1;
     bool releasingWater = false;
+    bool running = true;
 } globals;
+
+enum MENU {
+    EXIT,
+    RESET
+};
 
 void init(void)   /* initialization function  */
 {
@@ -48,6 +54,10 @@ void init(void)   /* initialization function  */
 }
 
 void update(int v) {
+    if(!globals.running) {
+        return;
+    }
+    
     // If mouse is in screen
     if(globals.mouse_x > 0 && globals.mouse_y > 0) {
         
@@ -116,6 +126,20 @@ void keyUp(unsigned char key, int x, int y) {
     }
 }
 
+void menuCB(int menu) {
+    switch (menu) {
+        case EXIT:
+            exit(0);
+            break;
+        case RESET:
+            cout << "reset" << endl;
+            
+        default:
+            break;
+    }
+    globals.running = true;
+}
+
 void mouse(int x, int y) {
     // If mouse is out of screen, set to be negative.
     if(WINDOW_SIZE_X - x >= 0 && WINDOW_SIZE_Y - y >= 0) {
@@ -124,6 +148,20 @@ void mouse(int x, int y) {
     } else {
         globals.mouse_x = -1;
         globals.mouse_y = -1;
+    }
+}
+
+void mouseClicked(int button, int state, int x, int y) {
+    switch (button) {
+        case GLUT_RIGHT_BUTTON:
+            cout << "right button" << endl;
+            break;
+        case GLUT_LEFT_BUTTON:
+            cout << "left button" << endl;
+            break;
+            
+        default:
+            break;
     }
 }
 
@@ -137,6 +175,14 @@ int main(int argc, char *argv[]) {
     glutKeyboardUpFunc(keyUp);
     glutPassiveMotionFunc(mouse);
     glutMotionFunc(mouse);
+    glutMouseFunc(mouseClicked);
+    
+    // Right Click Menu
+    glutCreateMenu(menuCB);
+    glutAddMenuEntry("Exit", EXIT);
+    glutAddMenuEntry("Reset", RESET);
+    glutAttachMenu(GLUT_RIGHT_BUTTON);
+    
     glutTimerFunc(0, update, 0);     // First timer call immediately
     init();      /* call init */
     glutMainLoop(); /* show screen window, call display and

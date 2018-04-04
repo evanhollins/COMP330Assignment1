@@ -18,6 +18,7 @@ using namespace std;
 #include "Helicopter.hpp"
 #include "Lake.hpp"
 #include "WaterBar.hpp"
+#include "Line.hpp"
 
 #define FRAMERATE 60 // Frames per second
 #define MILLISECONDS_PER_SECOND 1000

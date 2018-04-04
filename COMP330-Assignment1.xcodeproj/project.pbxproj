@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3749D3A72074733000184C15 /* Line.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3749D3A52074733000184C15 /* Line.cpp */; };
+		3749D3AA20748CBD00184C15 /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3749D3A820748CBD00184C15 /* Point.cpp */; };
 		375BA215206CFFBA000C8A7A /* Propeller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 375BA213206CFFBA000C8A7A /* Propeller.cpp */; };
 		37B12DFE2060B258001DDC56 /* Helicopter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B12DFC2060B258001DDC56 /* Helicopter.cpp */; };
 		37B12E002060B322001DDC56 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B12DFF2060B322001DDC56 /* Color.cpp */; };
@@ -34,6 +36,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3749D3A52074733000184C15 /* Line.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Line.cpp; sourceTree = "<group>"; };
+		3749D3A62074733000184C15 /* Line.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Line.hpp; sourceTree = "<group>"; };
+		3749D3A820748CBD00184C15 /* Point.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Point.cpp; sourceTree = "<group>"; };
+		3749D3A920748CBD00184C15 /* Point.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Point.hpp; sourceTree = "<group>"; };
 		375BA213206CFFBA000C8A7A /* Propeller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Propeller.cpp; sourceTree = "<group>"; };
 		375BA214206CFFBA000C8A7A /* Propeller.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Propeller.hpp; sourceTree = "<group>"; };
 		37B12DFC2060B258001DDC56 /* Helicopter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Helicopter.cpp; sourceTree = "<group>"; };
@@ -79,6 +85,8 @@
 				37E5FBDD206CAE0100C6977D /* Circle.hpp */,
 				37E5FBDF206CBF9900C6977D /* Rectangle.cpp */,
 				37E5FBE0206CBF9900C6977D /* Rectangle.hpp */,
+				3749D3A52074733000184C15 /* Line.cpp */,
+				3749D3A62074733000184C15 /* Line.hpp */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -92,6 +100,8 @@
 				37C8C3302059E03400E1A9E2 /* Color.hpp */,
 				37E5FBE3206CCDF500C6977D /* Shape.cpp */,
 				37E5FBE4206CCDF500C6977D /* Shape.hpp */,
+				3749D3A820748CBD00184C15 /* Point.cpp */,
+				3749D3A920748CBD00184C15 /* Point.hpp */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -206,9 +216,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3749D3AA20748CBD00184C15 /* Point.cpp in Sources */,
 				37B343B120731FFF0085F6FE /* Lake.cpp in Sources */,
 				37B12DFE2060B258001DDC56 /* Helicopter.cpp in Sources */,
 				37E5FBDE206CAE0100C6977D /* Circle.cpp in Sources */,
+				3749D3A72074733000184C15 /* Line.cpp in Sources */,
 				37B12E002060B322001DDC56 /* Color.cpp in Sources */,
 				37E5FBE5206CCDF500C6977D /* Shape.cpp in Sources */,
 				375BA215206CFFBA000C8A7A /* Propeller.cpp in Sources */,

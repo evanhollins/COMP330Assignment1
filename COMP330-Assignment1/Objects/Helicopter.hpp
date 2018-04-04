@@ -22,26 +22,27 @@ using namespace std;
 #include "Color.hpp"
 #include "Circle.hpp"
 #include "Rectangle.hpp"
+#include "Line.hpp"
 #include "Propeller.hpp"
 
-#define HELICOPTER_MAX_SPEED 3
-#define HELICOPTER_MAX_ANGLE_CHANGE 5
+#define HELICOPTER_MAX_SPEED 1
+#define HELICOPTER_MAX_ANGLE_CHANGE 3
 #define HELICOPTER_DEADBAND 1
 
 class Helicopter {
 private:
-    int x;
-    int y;
+    Point * location;
+    Point * target;
     int angle;
-    int targetX;
-    int targetY;
     int targetAngle;
     int size;
     int speed;
     vector<Shape *> shapes;
     Propellor * propellor;
+    Line * path;
     Color * bodyColor;
     Color * propColor;
+    Color * pathColor;
     
 public:
     Helicopter(int _x, int _y, int _size);
