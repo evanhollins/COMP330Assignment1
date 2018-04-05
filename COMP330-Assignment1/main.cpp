@@ -15,6 +15,7 @@ struct Globals {
     int mouseDownY = -1;
     bool draggingMouse = false;
     bool draggingMouseStartedInHelicopter = false;
+    bool helicopterFlying = true;
     bool releasingWater = false;
     bool running = true;
 } globals;
@@ -34,14 +35,13 @@ void init(void)   /* initialization function  */
                            BACKGROUND_G,
                            BACKGROUND_B,
                            BACKGROUND_A);
+    
+    map = new Map(WINDOW_SIZE_X, WINDOW_SIZE_Y);
+    
     helicopter = new Helicopter(WINDOW_SIZE_X/2,
                                 WINDOW_SIZE_Y/2,
                                 HELICOPTER_SIZE);
     
-    lake = new Lake(WINDOW_SIZE_X - WINDOW_SIZE_X / 10,
-                    WINDOW_SIZE_Y - WINDOW_SIZE_Y / 10,
-                    40,
-                    new Color(0.44, 0.63, 0.93));
     waterBar = new WaterBar(WINDOW_SIZE_X - WINDOW_SIZE_X / 10,
                             WINDOW_SIZE_Y / 20,
                             90,
@@ -62,7 +62,11 @@ void update(int v) {
         return;
     }
     
-    if(globals.draggingMouse && globals.draggingMouseStartedInHelicopter) {
+    if(!globals.helicopterFlying) {
+        helicopter->land();
+    } else if(globals.draggingMouse &&
+       globals.draggingMouseStartedInHelicopter) {
+        helicopter->takeoff();
         
         helicopter->setTargetAngle(deg(atan2(globals.mouseY - helicopter->getY(),
                                              globals.mouseX - helicopter->getX())));
@@ -71,10 +75,9 @@ void update(int v) {
                                   pow(globals.mouseX - helicopter->getX(), 2.0)));
         helicopter->setTargetX(globals.mouseX);
         helicopter->setTargetY(globals.mouseY);
-        
     }
     
-    if(lake->contains(helicopter->getX(), helicopter->getY())) {
+    if(map->inLake(helicopter->getX(), helicopter->getY())) {
         waterBar->increaseFilled(WATER_FILL_RATE);
     } else {
         if(globals.releasingWater && !waterBar->isEmpty()) {
@@ -97,7 +100,7 @@ void displayCB(void) /* display callback function,
                  background->getG(),
                  background->getB(),
                  background->getA()); /* set background color */
-    lake->draw();
+    map->draw();
     waterBar->draw();
     helicopter->draw();
     glutSwapBuffers();
@@ -169,7 +172,10 @@ void mousePassiveMotion(int x, int y) {
 }
 
 void handleClick(int x, int y) {
-    
+    if(map->inBase(x, y) && map->inBase(helicopter->getX(),
+                                              helicopter->getY())) {
+        globals.helicopterFlying = !globals.helicopterFlying;
+    }
 }
 
 void mouseClicked(int button, int state, int x, int y) {

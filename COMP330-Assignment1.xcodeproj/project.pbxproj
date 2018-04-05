@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3749D3A72074733000184C15 /* Line.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3749D3A52074733000184C15 /* Line.cpp */; };
 		3749D3AA20748CBD00184C15 /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3749D3A820748CBD00184C15 /* Point.cpp */; };
+		3749D3AD2074AC5C00184C15 /* SESBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3749D3AB2074AC5C00184C15 /* SESBase.cpp */; };
+		3749D3B32075ECFE00184C15 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3749D3B12075ECFE00184C15 /* Map.cpp */; };
 		375BA215206CFFBA000C8A7A /* Propeller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 375BA213206CFFBA000C8A7A /* Propeller.cpp */; };
 		37B12DFE2060B258001DDC56 /* Helicopter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B12DFC2060B258001DDC56 /* Helicopter.cpp */; };
 		37B12E002060B322001DDC56 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B12DFF2060B322001DDC56 /* Color.cpp */; };
@@ -40,6 +42,10 @@
 		3749D3A62074733000184C15 /* Line.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Line.hpp; sourceTree = "<group>"; };
 		3749D3A820748CBD00184C15 /* Point.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Point.cpp; sourceTree = "<group>"; };
 		3749D3A920748CBD00184C15 /* Point.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Point.hpp; sourceTree = "<group>"; };
+		3749D3AB2074AC5C00184C15 /* SESBase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SESBase.cpp; sourceTree = "<group>"; };
+		3749D3AC2074AC5C00184C15 /* SESBase.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SESBase.hpp; sourceTree = "<group>"; };
+		3749D3B12075ECFE00184C15 /* Map.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
+		3749D3B22075ECFE00184C15 /* Map.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Map.hpp; sourceTree = "<group>"; };
 		375BA213206CFFBA000C8A7A /* Propeller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Propeller.cpp; sourceTree = "<group>"; };
 		375BA214206CFFBA000C8A7A /* Propeller.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Propeller.hpp; sourceTree = "<group>"; };
 		37B12DFC2060B258001DDC56 /* Helicopter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Helicopter.cpp; sourceTree = "<group>"; };
@@ -117,6 +123,10 @@
 				37B343B020731FFF0085F6FE /* Lake.hpp */,
 				37B343B22073407F0085F6FE /* WaterBar.cpp */,
 				37B343B32073407F0085F6FE /* WaterBar.hpp */,
+				3749D3AB2074AC5C00184C15 /* SESBase.cpp */,
+				3749D3AC2074AC5C00184C15 /* SESBase.hpp */,
+				3749D3B12075ECFE00184C15 /* Map.cpp */,
+				3749D3B22075ECFE00184C15 /* Map.hpp */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -217,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3749D3AA20748CBD00184C15 /* Point.cpp in Sources */,
+				3749D3AD2074AC5C00184C15 /* SESBase.cpp in Sources */,
 				37B343B120731FFF0085F6FE /* Lake.cpp in Sources */,
 				37B12DFE2060B258001DDC56 /* Helicopter.cpp in Sources */,
 				37E5FBDE206CAE0100C6977D /* Circle.cpp in Sources */,
@@ -227,6 +238,7 @@
 				37B343AE2072FF320085F6FE /* MathUtil.cpp in Sources */,
 				37E5FBE1206CBF9900C6977D /* Rectangle.cpp in Sources */,
 				37E8B00C2059313500CE56BF /* main.cpp in Sources */,
+				3749D3B32075ECFE00184C15 /* Map.cpp in Sources */,
 				37B343B42073407F0085F6FE /* WaterBar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

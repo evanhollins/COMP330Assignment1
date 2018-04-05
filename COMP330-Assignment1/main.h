@@ -16,8 +16,8 @@
 using namespace std;
 
 #include "Color.hpp"
+#include "Map.hpp"
 #include "Helicopter.hpp"
-#include "Lake.hpp"
 #include "WaterBar.hpp"
 #include "Line.hpp"
 
@@ -37,8 +37,8 @@ using namespace std;
 #define WATER_RELEASE_RATE 0.03
 
 Color * background;
+Map * map;
 Helicopter * helicopter;
-Lake * lake;
 WaterBar * waterBar;
 
 
