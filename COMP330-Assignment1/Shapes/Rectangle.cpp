@@ -36,5 +36,5 @@ void Rectangle::draw() {
 }
 
 bool Rectangle::contains(int _x, int _y) {
-    return abs(x - _x)/2 <= size_x && abs(y - _y)/2 <= size_y;
+    return abs(x - _x) <= size_x/2 && abs(y - _y) <= size_y/2;
 }

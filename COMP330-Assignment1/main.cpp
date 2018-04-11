@@ -62,19 +62,18 @@ void update(int v) {
         return;
     }
     
-    if(!globals.helicopterFlying) {
-        helicopter->land();
-    } else if(globals.draggingMouse &&
+    if(globals.draggingMouse &&
        globals.draggingMouseStartedInHelicopter) {
+        globals.helicopterFlying = true;
         helicopter->takeoff();
-        
-        helicopter->setTargetAngle(deg(atan2(globals.mouseY - helicopter->getY(),
-                                             globals.mouseX - helicopter->getX())));
-        
-        helicopter->setSpeed(sqrt(pow(globals.mouseY - helicopter->getY(), 2.0) +
-                                  pow(globals.mouseX - helicopter->getX(), 2.0)));
         helicopter->setTargetX(globals.mouseX);
         helicopter->setTargetY(globals.mouseY);
+    }
+    
+    if(!globals.helicopterFlying) {
+        helicopter->setTargetX(helicopter->getX());
+        helicopter->setTargetY(helicopter->getY());
+        helicopter->land();
     }
     
     if(map->inLake(helicopter->getX(), helicopter->getY())) {
@@ -174,7 +173,7 @@ void mousePassiveMotion(int x, int y) {
 void handleClick(int x, int y) {
     if(map->inBase(x, y) && map->inBase(helicopter->getX(),
                                               helicopter->getY())) {
-        globals.helicopterFlying = !globals.helicopterFlying;
+        globals.helicopterFlying = false;
     }
 }
 

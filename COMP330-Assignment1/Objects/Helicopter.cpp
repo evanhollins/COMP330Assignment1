@@ -15,6 +15,8 @@ Helicopter::Helicopter(int _x, int _y, int _size) {
     setAngle(0);
     setTargetAngle(0);
     flying = true;
+    scale = 1.0;
+    targetScale = scale;
     bodyColor = new Color(0.2, 0.2, 0.2);
     propColor = new Color(0.5, 0.5, 0.5);
     pathColor = new Color(1.0, 0.0, 0.0);
@@ -41,12 +43,14 @@ void Helicopter::draw() {
     glPushMatrix();
     location->translate();
     glRotatef(angle, 0, 0, 1);
+    glScalef(scale, scale, 1);
     for(int i = 0; i < shapes.size(); i++) {
         shapes[i]->draw();
     }
     glPopMatrix();
     glPushMatrix();
     location->translate();
+    glScalef(scale, scale, 1);
     propellor->draw();
     glPopMatrix();
     if(location->distanceTo(target) > size/2) {
@@ -55,10 +59,19 @@ void Helicopter::draw() {
 }
 
 void Helicopter::update() {
+    if(targetScale > scale) {
+        scale += HELICOPTER_MAX_SCALE_CHANGE;
+    } else if(targetScale < scale) {
+        scale -= HELICOPTER_MAX_SCALE_CHANGE;
+    }
+    
     if(location->distanceTo(target) > HELICOPTER_DEADBAND) {
-        
         location->x += limit(target->x - location->x, HELICOPTER_MAX_SPEED);
         location->y += limit(target->y - location->y, HELICOPTER_MAX_SPEED);
+        setTargetAngle(deg(atan2(target->y - location->y,
+                                target->x - location->x)));
+        speed = sqrt(pow(target->y - location->y, 2.0) +
+                     pow(target->x - location->x, 2.0));
         setAngle(angle + limit(modDif(targetAngle,
                                       angle,
                                       FULL_CIRCLE_DEG),
@@ -149,11 +162,15 @@ bool Helicopter::contains(int _x, int _y) {
 }
 
 void Helicopter::land() {
-    flying = false;
-    propellor->stop();
+    targetScale = 0.75;
+    if(abs(targetScale - scale) < 0.02) {
+        propellor->stop();
+        flying = false;
+    }
 }
 
 void Helicopter::takeoff() {
+    targetScale = 1.0;
     flying = true;
     propellor->spin();
 }

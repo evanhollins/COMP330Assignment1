@@ -27,6 +27,7 @@ using namespace std;
 
 #define HELICOPTER_MAX_SPEED 1
 #define HELICOPTER_MAX_ANGLE_CHANGE 3
+#define HELICOPTER_MAX_SCALE_CHANGE 0.01
 #define HELICOPTER_DEADBAND 1
 
 class Helicopter {
@@ -36,6 +37,8 @@ private:
     int angle;
     int targetAngle;
     int size;
+    float scale;
+    float targetScale;
     int speed;
     bool flying;
     vector<Shape *> shapes;
