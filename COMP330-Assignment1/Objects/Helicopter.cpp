@@ -17,23 +17,18 @@ Helicopter::Helicopter(int _x, int _y, int _size) {
     flying = true;
     scale = 1.0;
     targetScale = scale;
-    bodyColor = new Color(0.2, 0.2, 0.2);
-    propColor = new Color(0.5, 0.5, 0.5);
-    pathColor = new Color(1.0, 0.0, 0.0);
     // Body
-    shapes.push_back(new ClosedCircle(0, 0, size/2, bodyColor));
-    shapes.push_back(new Rectangle(-size/2, 0, size, size/4, bodyColor));
-    shapes.push_back(new Rectangle(-size, 0, size / 8, size / 2, bodyColor));
+    shapes.push_back(new ClosedCircle(0, 0, size/2, Color::BLACK()));
+    shapes.push_back(new Rectangle(-size/2, 0, size, size/4, Color::BLACK()));
+    shapes.push_back(new Rectangle(-size, 0, size / 8, size / 2, Color::BLACK()));
     // Prop
-    propellor = new Propellor(0, 0, size, propColor);
+    propellor = new Propellor(0, 0, size);
     //Path
-    path = new Line(target, location, 2, pathColor);
+    path = new Line(target, location, 2, Color::RED());
     path->dashed = true;
 }
 
 Helicopter::~Helicopter() {
-    delete bodyColor;
-    delete propColor;
     for(int i = 0; i < shapes.size(); i++) {
         delete shapes[i];
     }

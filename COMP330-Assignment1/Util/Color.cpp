@@ -8,13 +8,6 @@
 
 #include "Color.hpp"
 
-Color::Color(float _r, float _g, float _b, float _a) {
-    this->r = _r;
-    this->g = _g;
-    this->b = _b;
-    this->a = _a;
-}
-
 Color::Color(float _r, float _g, float _b) {
     this->r = _r;
     this->g = _g;

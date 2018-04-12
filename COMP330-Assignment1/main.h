@@ -29,14 +29,13 @@ using namespace std;
 #define BACKGROUND_R 0.78
 #define BACKGROUND_G 0.66
 #define BACKGROUND_B 0.33
-#define BACKGROUND_A 0.0
 
 #define HELICOPTER_SIZE 50
 
 #define WATER_FILL_RATE 0.01
 #define WATER_RELEASE_RATE 0.03
 
-Color * background;
+Color background = Color::BACKGROUND();
 Map * map;
 Helicopter * helicopter;
 WaterBar * waterBar;

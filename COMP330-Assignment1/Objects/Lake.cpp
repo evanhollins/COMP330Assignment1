@@ -8,17 +8,15 @@
 
 #include "Lake.hpp"
 
-Lake::Lake(int _x, int _y, int _size, Color * _color) {
+Lake::Lake(int _x, int _y, int _size) {
     x = _x;
     y = _y;
     size = _size;
-    color = _color;
     
-    shapes.push_back(new ClosedCircle(x, y, size, color));
+    shapes.push_back(new ClosedCircle(x, y, size, Color::WATER()));
 }
 
 Lake::~Lake() {
-    delete color;
 }
 
 void Lake::draw() {

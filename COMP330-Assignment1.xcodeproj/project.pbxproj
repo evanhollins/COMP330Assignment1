@@ -17,6 +17,7 @@
 		37B343AE2072FF320085F6FE /* MathUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B343AC2072FF320085F6FE /* MathUtil.cpp */; };
 		37B343B120731FFF0085F6FE /* Lake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B343AF20731FFF0085F6FE /* Lake.cpp */; };
 		37B343B42073407F0085F6FE /* WaterBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B343B22073407F0085F6FE /* WaterBar.cpp */; };
+		37C86A77207E192D0076E0A0 /* FuelBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37C86A75207E192D0076E0A0 /* FuelBar.cpp */; };
 		37E5FBDE206CAE0100C6977D /* Circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37E5FBDC206CAE0100C6977D /* Circle.cpp */; };
 		37E5FBE1206CBF9900C6977D /* Rectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37E5FBDF206CBF9900C6977D /* Rectangle.cpp */; };
 		37E5FBE5206CCDF500C6977D /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37E5FBE3206CCDF500C6977D /* Shape.cpp */; };
@@ -57,6 +58,8 @@
 		37B343B020731FFF0085F6FE /* Lake.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Lake.hpp; sourceTree = "<group>"; };
 		37B343B22073407F0085F6FE /* WaterBar.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WaterBar.cpp; sourceTree = "<group>"; };
 		37B343B32073407F0085F6FE /* WaterBar.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WaterBar.hpp; sourceTree = "<group>"; };
+		37C86A75207E192D0076E0A0 /* FuelBar.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FuelBar.cpp; sourceTree = "<group>"; };
+		37C86A76207E192D0076E0A0 /* FuelBar.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FuelBar.hpp; sourceTree = "<group>"; };
 		37C8C3302059E03400E1A9E2 /* Color.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Color.hpp; sourceTree = "<group>"; };
 		37C8C3322059E4DE00E1A9E2 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		37E5FBDC206CAE0100C6977D /* Circle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Circle.cpp; sourceTree = "<group>"; };
@@ -127,6 +130,8 @@
 				3749D3AC2074AC5C00184C15 /* SESBase.hpp */,
 				3749D3B12075ECFE00184C15 /* Map.cpp */,
 				3749D3B22075ECFE00184C15 /* Map.hpp */,
+				37C86A75207E192D0076E0A0 /* FuelBar.cpp */,
+				37C86A76207E192D0076E0A0 /* FuelBar.hpp */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3749D3AA20748CBD00184C15 /* Point.cpp in Sources */,
+				37C86A77207E192D0076E0A0 /* FuelBar.cpp in Sources */,
 				3749D3AD2074AC5C00184C15 /* SESBase.cpp in Sources */,
 				37B343B120731FFF0085F6FE /* Lake.cpp in Sources */,
 				37B12DFE2060B258001DDC56 /* Helicopter.cpp in Sources */,

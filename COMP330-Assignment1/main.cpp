@@ -31,11 +31,6 @@ void init(void)   /* initialization function  */
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
-    background = new Color(BACKGROUND_R,
-                           BACKGROUND_G,
-                           BACKGROUND_B,
-                           BACKGROUND_A);
-    
     map = new Map(WINDOW_SIZE_X, WINDOW_SIZE_Y);
     
     helicopter = new Helicopter(WINDOW_SIZE_X/2,
@@ -45,13 +40,12 @@ void init(void)   /* initialization function  */
     waterBar = new WaterBar(WINDOW_SIZE_X - WINDOW_SIZE_X / 10,
                             WINDOW_SIZE_Y / 20,
                             90,
-                            20,
-                            new Color(0.44, 0.63, 0.93));
+                            20);
     
-    glClearColor(background->getR(),
-                 background->getG(),
-                 background->getB(),
-                 background->getA()); /* set background color */
+    glClearColor(background.getR(),
+                 background.getG(),
+                 background.getB(),
+                 background.getA()); /* set background color */
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluOrtho2D(0, WINDOW_SIZE_X, WINDOW_SIZE_Y, 0); /* defines world window */
@@ -95,10 +89,10 @@ void displayCB(void) /* display callback function,
                       whenever redisplay needed */
 {
     glClear( GL_COLOR_BUFFER_BIT); /* clear the screen window */
-    glClearColor(background->getR(),
-                 background->getG(),
-                 background->getB(),
-                 background->getA()); /* set background color */
+    glClearColor(background.getR(),
+                 background.getG(),
+                 background.getB(),
+                 background.getA()); /* set background color */
     map->draw();
     waterBar->draw();
     helicopter->draw();

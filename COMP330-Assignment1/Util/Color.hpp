@@ -22,9 +22,7 @@ private:
     float b;
     float a;
 public:
-    Color(float _r, float _g, float _b, float _a);
     Color(float _r, float _g, float _b);
-    void update() {};
     float getR();
     float getG();
     float getB();
@@ -34,6 +32,14 @@ public:
     void setB(float x);
     void setA(float x);
     void set();
+    
+    static Color WHITE() {return {1.0, 1.0, 1.0};};
+    static Color BLACK() {return {0.0, 0.0, 0.0};};
+    static Color GRAY() {return {0.77, 0.77, 0.77};};
+    static Color FUEL() {return {1.0, 0.86, 0.5};};
+    static Color WATER() {return {0.44, 0.63, 0.93};};
+    static Color RED() {return {1.0, 0.0, 0.0};};
+    static Color BACKGROUND() {return {0.78, 0.66, 0.33};};
     
 };
 

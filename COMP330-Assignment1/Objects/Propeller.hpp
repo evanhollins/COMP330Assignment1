@@ -24,12 +24,11 @@ public:
     int radius;
     int angle;
     bool spinning;
-    Color * color;
-    Color * backgroundColor;
+    const Color color;
     ClosedCircle * propBackground;
     const float TWICEPI = 3.14159 * 2;
     
-    Propellor(int _x, int _y, int _radius, Color * _color);
+    Propellor(int _x, int _y, int _radius);
     ~Propellor();
     void draw();
     void update();

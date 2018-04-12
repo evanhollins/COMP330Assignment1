@@ -23,8 +23,7 @@ public:
     int x;
     int y;
     int size;
-    Color * color;
-    Lake(int _x, int _y, int _size, Color * _color);
+    Lake(int _x, int _y, int _size);
     ~Lake();
     void draw();
     void update() {};

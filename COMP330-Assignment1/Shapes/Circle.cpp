@@ -9,7 +9,7 @@
 #include "Circle.hpp"
 
 Circle::~Circle() {
-    delete color;
+    
 }
 
 bool Circle::contains(int _x, int _y) {
@@ -17,7 +17,7 @@ bool Circle::contains(int _x, int _y) {
 }
 
 void OpenCircle::draw() {
-    color->set();
+    color.set();
     glPushMatrix();
     glTranslatef(x, y, 0);
     glBegin(GL_LINE_LOOP);
@@ -31,7 +31,7 @@ void OpenCircle::draw() {
 }
 
 void ClosedCircle::draw() {
-    color->set();
+    color.set();
     glPushMatrix();
     glTranslatef(x, y, 0);
     glBegin(GL_TRIANGLE_FAN);

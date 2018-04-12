@@ -23,9 +23,9 @@ public:
     int angle;
     int x;
     int y;
-    Color * color;
+    Color color;
     
-    Rectangle(int _x, int _y, int _size_x, int _size_y, Color * _color);
+    Rectangle(int _x, int _y, int _size_x, int _size_y, Color _color): x(_x), y(_y), size_x(_size_x), size_y(_size_y), color(_color) {angle = 0;};
     ~Rectangle();
     void draw();
     void update() {};

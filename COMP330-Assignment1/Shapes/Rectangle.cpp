@@ -8,21 +8,12 @@
 
 #include "Rectangle.hpp"
 
-Rectangle::Rectangle(int _x, int _y, int _size_x, int _size_y, Color * _color) {
-    x = _x;
-    y = _y;
-    size_x = _size_x;
-    size_y = _size_y;
-    color = _color;
-    angle = 0;
-}
-
 Rectangle::~Rectangle() {
-    delete color;
+    
 }
 
 void Rectangle::draw() {
-    color->set();
+    color.set();
     glPushMatrix();
     glTranslatef(x, y, 0);
     glRotatef(angle, 0, 0, 1);

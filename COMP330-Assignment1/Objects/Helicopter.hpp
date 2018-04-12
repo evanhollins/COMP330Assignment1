@@ -44,9 +44,6 @@ private:
     vector<Shape *> shapes;
     Propellor * propellor;
     Line * path;
-    Color * bodyColor;
-    Color * propColor;
-    Color * pathColor;
     
 public:
     Helicopter(int _x, int _y, int _size);

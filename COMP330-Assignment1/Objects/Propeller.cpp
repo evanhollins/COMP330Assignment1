@@ -8,18 +8,19 @@
 
 #include "Propeller.hpp"
 
-Propellor::Propellor(int _x, int _y, int _radius, Color * _color) {
+Propellor::Propellor(int _x, int _y, int _radius) {
     x = _x;
     y = _y;
     radius = _radius;
-    color = _color;
     angle = 0;
     spinning = true;
-    backgroundColor = new Color(color->getR(), color->getG(), color->getB(), 0.2);
+    color = Color::GRAY();
+    Color backgroundColor = Color::GRAY();
+    backgroundColor.setA(0.2);
     propBackground = new ClosedCircle(x, y, radius, backgroundColor);
 }
 Propellor::~Propellor() {
-    delete color;
+    delete propBackground;
 }
 
 void Propellor::update() {
@@ -30,7 +31,7 @@ void Propellor::update() {
 
 void Propellor::draw() {
     propBackground->draw();
-    color->set();
+    color.set();
     glPushMatrix();
     glTranslatef(x, y, 0);
     glRotatef(angle, 0, 0, 1);
@@ -39,8 +40,8 @@ void Propellor::draw() {
         glVertex2f(0, 0); // center of circle
         for(int j = 0; j < 12; j++) {
             glVertex2f(
-                       (radius * cos((j + (120 * i)) * TWICEPI / 360)),
-                       (radius * sin((j + (120 * i)) * TWICEPI / 360))
+                       (radius * cos((j + (120 * i)) * TWICEPI / FULL_CIRCLE_DEG)),
+                       (radius * sin((j + (120 * i)) * TWICEPI / FULL_CIRCLE_DEG))
                        );
         }
         glEnd();
