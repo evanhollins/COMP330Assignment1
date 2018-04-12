@@ -29,7 +29,7 @@ public:
     ~Rectangle();
     void draw();
     void update() {};
-    bool contains(int _x, int _y);
+    bool contains(int, int);
 };
 
 #endif /* Rectangle_hpp */

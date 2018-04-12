@@ -14,16 +14,22 @@
 
 #include "Shape.hpp"
 #include "Color.hpp"
+#include "Circle.hpp"
+#include "Triangle.hpp"
+
+#define FIRE_SIZE 18
 
 class Fire: public Shape {
+public:
     int x;
     int y;
     std::vector<Shape *> shapes;
     Fire(int x, int y);
     ~Fire();
+    void update() {};
     void draw();
     bool contains(int _x, int _y);
-    
+
 };
 
 #endif /* Fire_hpp */

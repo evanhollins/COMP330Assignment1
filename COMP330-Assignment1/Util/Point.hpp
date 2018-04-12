@@ -18,8 +18,8 @@ public:
     int x;
     int y;
     Point(int _x, int _y): x(_x), y(_y) {};
-    float distanceTo(int _x, int _y);
-    float distanceTo(Point * b);
+    float distanceTo(int, int);
+    float distanceTo(Point *);
     void vertex();
     void translate();
 };

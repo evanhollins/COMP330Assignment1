@@ -25,7 +25,7 @@ using namespace std;
 #include "Line.hpp"
 #include "Propeller.hpp"
 
-#define HELICOPTER_MAX_SPEED 1
+#define HELICOPTER_MAX_SPEED 2
 #define HELICOPTER_MAX_ANGLE_CHANGE 3
 #define HELICOPTER_MAX_SCALE_CHANGE 0.01
 #define HELICOPTER_DEADBAND 1

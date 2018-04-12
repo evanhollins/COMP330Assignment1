@@ -20,6 +20,7 @@ using namespace std;
 #include "Helicopter.hpp"
 #include "WaterBar.hpp"
 #include "Line.hpp"
+#include "Fire.hpp"
 
 #define FRAMERATE 60 // Frames per second
 #define MILLISECONDS_PER_SECOND 1000
