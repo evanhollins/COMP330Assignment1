@@ -15,8 +15,8 @@ WaterBar::WaterBar(int _x, int _y, int _width, int _height) {
     height = _height;
     filled = WATER_BAR_MIN_FILLED;
     
-    background = new Rectangle(x, y, width, height, Color::BLACK());
-    foreground = new Rectangle(getFilledBarX(), y, getFilledBarWidth(), height - PADDING * 2, Color::WATER());
+    background = new Rectangle(x, y, width, height, Color::BLACK);
+    foreground = new Rectangle(getFilledBarX(), y, getFilledBarWidth(), height - PADDING * 2, Color::WATER);
 }
 
 WaterBar::~WaterBar() {

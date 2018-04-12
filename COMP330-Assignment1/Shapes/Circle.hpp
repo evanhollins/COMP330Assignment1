@@ -24,12 +24,12 @@ protected:
     
 public:
     float radius;
-    Color color;
+    Color::Color color;
     int x;
     int y;
     
     int iterations;
-    Circle(int _x, int _y, float _radius, Color _color):
+    Circle(int _x, int _y, float _radius, Color::Color _color):
         x(_x), y(_y), radius(_radius), color(_color) {
         iterations = FULL_CIRCLE_DEG;
     };
@@ -42,7 +42,7 @@ public:
 
 class OpenCircle: public Circle {
 public:
-    OpenCircle(int _x, int _y, float _radius, Color _color):
+    OpenCircle(int _x, int _y, float _radius, Color::Color _color):
         Circle(_x, _y, _radius, _color) {};
     ~OpenCircle() = default;
     virtual void draw();
@@ -50,7 +50,7 @@ public:
 
 class ClosedCircle: public Circle {
 public:
-    ClosedCircle(int _x, int _y, float _radius, Color _color):
+    ClosedCircle(int _x, int _y, float _radius, Color::Color _color):
         Circle(_x, _y, _radius, _color) {};
     ~ClosedCircle() = default;
     virtual void draw();

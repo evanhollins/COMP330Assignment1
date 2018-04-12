@@ -42,10 +42,10 @@ void init(void)   /* initialization function  */
                             90,
                             20);
     
-    glClearColor(background.getR(),
-                 background.getG(),
-                 background.getB(),
-                 background.getA()); /* set background color */
+    glClearColor(background.r,
+                 background.g,
+                 background.b,
+                 background.a); /* set background color */
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluOrtho2D(0, WINDOW_SIZE_X, WINDOW_SIZE_Y, 0); /* defines world window */
@@ -89,10 +89,10 @@ void displayCB(void) /* display callback function,
                       whenever redisplay needed */
 {
     glClear( GL_COLOR_BUFFER_BIT); /* clear the screen window */
-    glClearColor(background.getR(),
-                 background.getG(),
-                 background.getB(),
-                 background.getA()); /* set background color */
+    glClearColor(background.r,
+                 background.g,
+                 background.b,
+                 background.a); /* set background color */
     map->draw();
     waterBar->draw();
     helicopter->draw();

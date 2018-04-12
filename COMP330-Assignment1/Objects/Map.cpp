@@ -12,10 +12,7 @@ Map::Map(int _x, int _y) {
     x = _x;
     y = _y;
     
-    lake = new Lake(450,
-                    450,
-                    40,
-                    new Color(0.44, 0.63, 0.93));
+    lake = new Lake(450, 450, 40);
     
     base = new SESBase(80, 80);
     

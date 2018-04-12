@@ -24,8 +24,8 @@ using namespace std;
 #define FRAMERATE 60 // Frames per second
 #define MILLISECONDS_PER_SECOND 1000
 #define MOUSE_CLICK_DEADBAND 10
-#define WINDOW_SIZE_X 500
-#define WINDOW_SIZE_Y 500
+#define WINDOW_SIZE_X 1000
+#define WINDOW_SIZE_Y 750
 #define BACKGROUND_R 0.78
 #define BACKGROUND_G 0.66
 #define BACKGROUND_B 0.33
@@ -35,7 +35,7 @@ using namespace std;
 #define WATER_FILL_RATE 0.01
 #define WATER_RELEASE_RATE 0.03
 
-Color background = Color::BACKGROUND();
+Color::Color background = Color::BACKGROUND;
 Map * map;
 Helicopter * helicopter;
 WaterBar * waterBar;

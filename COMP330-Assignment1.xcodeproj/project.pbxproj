@@ -12,6 +12,7 @@
 		3749D3AD2074AC5C00184C15 /* SESBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3749D3AB2074AC5C00184C15 /* SESBase.cpp */; };
 		3749D3B32075ECFE00184C15 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3749D3B12075ECFE00184C15 /* Map.cpp */; };
 		375BA215206CFFBA000C8A7A /* Propeller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 375BA213206CFFBA000C8A7A /* Propeller.cpp */; };
+		37714833207F54D20050755B /* Fire.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37714831207F54D20050755B /* Fire.cpp */; };
 		37B12DFE2060B258001DDC56 /* Helicopter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B12DFC2060B258001DDC56 /* Helicopter.cpp */; };
 		37B12E002060B322001DDC56 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B12DFF2060B322001DDC56 /* Color.cpp */; };
 		37B343AE2072FF320085F6FE /* MathUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B343AC2072FF320085F6FE /* MathUtil.cpp */; };
@@ -49,6 +50,8 @@
 		3749D3B22075ECFE00184C15 /* Map.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Map.hpp; sourceTree = "<group>"; };
 		375BA213206CFFBA000C8A7A /* Propeller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Propeller.cpp; sourceTree = "<group>"; };
 		375BA214206CFFBA000C8A7A /* Propeller.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Propeller.hpp; sourceTree = "<group>"; };
+		37714831207F54D20050755B /* Fire.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Fire.cpp; sourceTree = "<group>"; };
+		37714832207F54D20050755B /* Fire.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Fire.hpp; sourceTree = "<group>"; };
 		37B12DFC2060B258001DDC56 /* Helicopter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Helicopter.cpp; sourceTree = "<group>"; };
 		37B12DFD2060B258001DDC56 /* Helicopter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Helicopter.hpp; sourceTree = "<group>"; };
 		37B12DFF2060B322001DDC56 /* Color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
@@ -132,6 +135,8 @@
 				3749D3B22075ECFE00184C15 /* Map.hpp */,
 				37C86A75207E192D0076E0A0 /* FuelBar.cpp */,
 				37C86A76207E192D0076E0A0 /* FuelBar.hpp */,
+				37714831207F54D20050755B /* Fire.cpp */,
+				37714832207F54D20050755B /* Fire.hpp */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 				37E8B00C2059313500CE56BF /* main.cpp in Sources */,
 				3749D3B32075ECFE00184C15 /* Map.cpp in Sources */,
 				37B343B42073407F0085F6FE /* WaterBar.cpp in Sources */,
+				37714833207F54D20050755B /* Fire.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

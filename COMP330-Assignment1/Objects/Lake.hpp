@@ -18,7 +18,7 @@
 
 class Lake: public Shape {
 private:
-    vector<Shape *> shapes;
+    std::vector<Shape *> shapes;
 public:
     int x;
     int y;

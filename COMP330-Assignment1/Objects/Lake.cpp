@@ -13,7 +13,7 @@ Lake::Lake(int _x, int _y, int _size) {
     y = _y;
     size = _size;
     
-    shapes.push_back(new ClosedCircle(x, y, size, Color::WATER()));
+    shapes.push_back(new ClosedCircle(x, y, size, Color::WATER));
 }
 
 Lake::~Lake() {

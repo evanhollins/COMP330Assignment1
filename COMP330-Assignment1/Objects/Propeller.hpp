@@ -24,7 +24,7 @@ public:
     int radius;
     int angle;
     bool spinning;
-    const Color color;
+    Color::Color color;
     ClosedCircle * propBackground;
     const float TWICEPI = 3.14159 * 2;
     

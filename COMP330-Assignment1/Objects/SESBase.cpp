@@ -15,35 +15,35 @@ SESBase::SESBase(int _x, int _y) {
                                    _y,
                                    160,
                                    160,
-                                   Color::GRAY()));
+                                   Color::GRAY));
     shapes.push_back(new ClosedCircle(_x,
                                       _y,
                                       70,
-                                      Color::WHITE()));
+                                      Color::WHITE));
     shapes.push_back(new ClosedCircle(_x,
                                       _y,
                                       60,
-                                      Color::GRAY()));
+                                      Color::GRAY));
     shapes.push_back(new Line(_x - 20,
                               _y,
                               _x + 20,
                               _y,
                               4,
-                              Color::WHITE()));
+                              Color::WHITE));
     
     shapes.push_back(new Line(_x - 20,
                               _y + 30,
                               _x - 20,
                               _y - 30,
                               4,
-                              Color::WHITE()));
+                              Color::WHITE));
     
     shapes.push_back(new Line(_x + 20,
                               _y + 30,
                               _x + 20,
                               _y - 30,
                               4,
-                              Color::WHITE()));
+                              Color::WHITE));
 }
 
 SESBase::~SESBase() {

@@ -14,9 +14,9 @@ Propellor::Propellor(int _x, int _y, int _radius) {
     radius = _radius;
     angle = 0;
     spinning = true;
-    color = Color::GRAY();
-    Color backgroundColor = Color::GRAY();
-    backgroundColor.setA(0.2);
+    color = Color::GRAY;
+    Color::Color backgroundColor = Color::GRAY;
+    backgroundColor.a = 0.2;
     propBackground = new ClosedCircle(x, y, radius, backgroundColor);
 }
 Propellor::~Propellor() {

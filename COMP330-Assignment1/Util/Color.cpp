@@ -8,11 +8,21 @@
 
 #include "Color.hpp"
 
+
+
+/*
 Color::Color(float _r, float _g, float _b) {
     this->r = _r;
     this->g = _g;
     this->b = _b;
     this->a = 1.0;
+}
+
+Color::Color() {
+    r = 0.0;
+    g = 0.0;
+    b = 0.0;
+    a = 1.0;
 }
 
 float Color::getR() {
@@ -74,3 +84,4 @@ void Color::setA(float x) {
 void Color::set() {
     glColor4f(r, g, b, a);
 }
+ */
