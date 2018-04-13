@@ -9,8 +9,8 @@
 
 
 Helicopter::Helicopter(int _x, int _y, int _size) {
-    location = new Point(_x, _y);
-    target = new Point(_x, _y);
+    location = Point(_x, _y);
+    target = Point(_x, _y);
     setSize(_size);
     setAngle(0);
     setTargetAngle(0);
@@ -36,7 +36,7 @@ Helicopter::~Helicopter() {
 
 void Helicopter::draw() {
     glPushMatrix();
-    location->translate();
+    location.translate();
     glRotatef(angle, 0, 0, 1);
     glScalef(scale, scale, 1);
     for(int i = 0; i < shapes.size(); i++) {
@@ -44,11 +44,11 @@ void Helicopter::draw() {
     }
     glPopMatrix();
     glPushMatrix();
-    location->translate();
+    location.translate();
     glScalef(scale, scale, 1);
     propellor->draw();
     glPopMatrix();
-    if(location->distanceTo(target) > size/2) {
+    if(location.distanceTo(target) > size/2) {
         path->draw();
     }
 }
@@ -60,17 +60,19 @@ void Helicopter::update() {
         scale -= HELICOPTER_MAX_SCALE_CHANGE;
     }
     
-    if(location->distanceTo(target) > HELICOPTER_DEADBAND) {
-        location->x += limit(target->x - location->x, HELICOPTER_MAX_SPEED);
-        location->y += limit(target->y - location->y, HELICOPTER_MAX_SPEED);
-        setTargetAngle(deg(atan2(target->y - location->y,
-                                target->x - location->x)));
-        speed = sqrt(pow(target->y - location->y, 2.0) +
-                     pow(target->x - location->x, 2.0));
+    if(location.distanceTo(target) > HELICOPTER_DEADBAND) {
+        location.x += limit(target.x - location.x, HELICOPTER_MAX_SPEED);
+        location.y += limit(target.y - location.y, HELICOPTER_MAX_SPEED);
+        setTargetAngle(deg(atan2(target.y - location.y,
+                                target.x - location.x)));
+        speed = sqrt(pow(target.y - location.y, 2.0) +
+                     pow(target.x - location.x, 2.0));
         setAngle(angle + limit(modDif(targetAngle,
                                       angle,
                                       FULL_CIRCLE_DEG),
                                HELICOPTER_MAX_ANGLE_CHANGE));
+        path->p1 = target;
+        path->p2 = location;
         
     }
     for(int i = 0; i < shapes.size(); i++) {
@@ -80,19 +82,19 @@ void Helicopter::update() {
 }
 
 int Helicopter::getX() {
-    return location->x;
+    return location.x;
 }
 
 int Helicopter::getY() {
-    return location->y;
+    return location.y;
 }
 
 int Helicopter::getTargetX() {
-    return target->x;
+    return target.x;
 }
 
 int Helicopter::getTargetY() {
-    return target->y;
+    return target.y;
 }
 
 int Helicopter::getTargetAngle() {
@@ -108,19 +110,19 @@ int Helicopter::getAngle() {
 }
 
 void Helicopter::setX(int _x) {
-    location->x = _x;
+    location.x = _x;
 }
 
 void Helicopter::setY(int _y) {
-    location->y = _y;
+    location.y = _y;
 }
 
 void Helicopter::setTargetX(int _x) {
-    target->x= _x;
+    target.x= _x;
 }
 
 void Helicopter::setTargetY(int _y) {
-    target->y = _y;
+    target.y = _y;
 }
 
 void Helicopter::setTargetAngle(int _angle) {
@@ -144,12 +146,12 @@ int Helicopter::getSpeed() {
 }
 
 float Helicopter::distanceTo(int _x, int _y) {
-    return location->distanceTo(_x, _y);
+    return location.distanceTo(_x, _y);
 }
 
 bool Helicopter::contains(int _x, int _y) {
     for(int i = 0; i < shapes.size(); i++) {
-        if(shapes[i]->contains(_x - location->x, _y - location->y)) {
+        if(shapes[i]->contains(_x - location.x, _y - location.y)) {
             return true;
         }
     }

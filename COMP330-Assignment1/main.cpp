@@ -37,7 +37,7 @@ void init(void)   /* initialization function  */
                                 WINDOW_SIZE_Y/2,
                                 HELICOPTER_SIZE);
     
-    waterBar = new WaterBar(WINDOW_SIZE_X - WINDOW_SIZE_X / 10,
+    waterBar = new WaterBar(WINDOW_SIZE_X - WINDOW_SIZE_X / 20,
                             WINDOW_SIZE_Y / 20,
                             90,
                             20);
@@ -88,7 +88,7 @@ void displayCB(void) /* display callback function,
                       called for initial display and
                       whenever redisplay needed */
 {
-    glClear( GL_COLOR_BUFFER_BIT); /* clear the screen window */
+    glClear( GL_COLOR_BUFFER_BIT); /* clear the screen  window */
     glClearColor(background.r,
                  background.g,
                  background.b,

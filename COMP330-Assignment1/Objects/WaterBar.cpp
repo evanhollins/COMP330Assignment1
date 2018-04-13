@@ -37,7 +37,7 @@ float WaterBar::getFilledBarX() {
 
 void WaterBar::setFilled(float _filled) {
     filled = fmax(fmin(_filled, WATER_BAR_MAX_FILLED), WATER_BAR_MIN_FILLED);
-    foreground->x = getFilledBarX();
+    foreground->p.x = getFilledBarX();
     foreground->size_x = round(getFilledBarWidth());
 }
 

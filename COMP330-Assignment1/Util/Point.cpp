@@ -12,8 +12,8 @@ float Point::distanceTo(int _x, int _y) {
     return sqrt(pow(x - _x, 2) + pow(y - _y, 2));
 }
 
-float Point::distanceTo(Point * b) {
-    return distanceTo(b->x, b->y);
+float Point::distanceTo(Point b) {
+    return distanceTo(b.x, b.y);
 }
 
 void Point::vertex() {

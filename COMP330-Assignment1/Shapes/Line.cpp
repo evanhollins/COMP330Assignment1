@@ -8,9 +8,14 @@
 
 #include "Line.hpp"
 
+Line::Line() {
+    p1 = Point(0, 0);
+    p2 = Point(0, 0);
+    dashed = false;
+    color = Color::CLEAR;
+}
+
 Line::~Line() {
-    delete p1;
-    delete p2;
 }
 
 void Line::draw() {
@@ -18,14 +23,14 @@ void Line::draw() {
     glLineWidth(stroke);
     color.set();
     if(dashed) {
-        glLineStipple(4, 0xAAAA);
+        glLineStipple(lineStippleMultiplier, lineStipplePattern);
         glEnable(GL_LINE_STIPPLE);
         glBegin(GL_LINE_STRIP);
     } else {
         glBegin(GL_LINES);
     }
-    p1->vertex();
-    p2->vertex();
+    p1.vertex();
+    p2.vertex();
     glEnd();
     glDisable(GL_LINE_STIPPLE);
     glPopAttrib();

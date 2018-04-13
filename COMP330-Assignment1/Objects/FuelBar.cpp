@@ -39,7 +39,7 @@ float FuelBar::getFilledBarX() {
 
 void FuelBar::setFilled(float _filled) {
     filled = fmax(fmin(_filled, FUEL_BAR_MAX_FILLED), FUEL_BAR_MIN_FILLED);
-    foreground->x = getFilledBarX();
+    foreground->p.x = getFilledBarX();
     foreground->size_x = round(getFilledBarWidth());
 }
 

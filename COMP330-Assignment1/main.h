@@ -20,7 +20,7 @@ using namespace std;
 #include "Helicopter.hpp"
 #include "WaterBar.hpp"
 #include "Line.hpp"
-#include "Fire.hpp"
+#include "Road.hpp"
 
 #define FRAMERATE 60 // Frames per second
 #define MILLISECONDS_PER_SECOND 1000
@@ -40,6 +40,5 @@ Color::Color background = Color::BACKGROUND;
 Map * map;
 Helicopter * helicopter;
 WaterBar * waterBar;
-
 
 #endif /* main_h */

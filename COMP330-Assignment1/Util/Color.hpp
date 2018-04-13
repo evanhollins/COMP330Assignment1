@@ -27,6 +27,7 @@ namespace Color {
     const Color WHITE{1.0, 1.0, 1.0, 1.0};
     const Color BLACK{0.0, 0.0, 0.0, 1.0};
     const Color GRAY{0.77, 0.77, 0.77, 1.0};
+    const Color ROAD{0.52, 0.52, 0.52, 1.0};
     const Color FUEL{1.0, 0.86, 0.5, 1.0};
     const Color WATER{0.44, 0.63, 0.93, 1.0};
     const Color RED{1.0, 0.0, 0.0, 1.0};
@@ -34,7 +35,7 @@ namespace Color {
     const Color FIRE_RED{0.95, 0.27, 0.1, 1.0};
     const Color FIRE_ORANGE{0.97, 0.58, 0.07, 1.0};
     const Color FIRE_YELLOW {1.0, 0.91, 0.45, 1.0};
-    
+    const Color CLEAR {0.0, 0.0, 0.0, 0.0};
 }
 
 #endif

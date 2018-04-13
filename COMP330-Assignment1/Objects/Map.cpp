@@ -12,12 +12,16 @@ Map::Map(int _x, int _y) {
     x = _x;
     y = _y;
     
-    lake = new Lake(450, 450, 40);
+    lake = new Lake(600, 600, 40);
     
     base = new SESBase(80, 80);
     
+    road = new Road(Point(x / 2, y / 2), x, 150);
+    
     shapes.push_back(lake);
     shapes.push_back(base);
+    shapes.push_back(road);
+    
 }
 
 Map::~Map() {

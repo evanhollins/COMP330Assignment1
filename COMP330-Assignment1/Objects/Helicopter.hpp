@@ -32,8 +32,8 @@ using namespace std;
 
 class Helicopter {
 private:
-    Point * location;
-    Point * target;
+    Point location;
+    Point target;
     int angle;
     int targetAngle;
     int size;

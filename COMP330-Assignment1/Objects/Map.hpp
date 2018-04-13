@@ -15,11 +15,13 @@
 #include "Shape.hpp"
 #include "SESBase.hpp"
 #include "Lake.hpp"
+#include "Road.hpp"
 
 class Map {
 private:
     SESBase * base;
     Lake * lake;
+    Road * road;
     vector<Shape *> shapes;
     int x;
     int y;
