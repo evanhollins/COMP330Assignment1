@@ -10,6 +10,7 @@
 #define Shape_hpp
 
 #include <stdio.h>
+#include <vector>
 
 #include "Color.hpp"
 
@@ -19,6 +20,18 @@ public:
     virtual void draw() =0;
     virtual void update()=0;
     virtual bool contains(int, int) =0;
+};
+
+class Shapes: public Shape {
+private:
+    std::vector<Shape *> shapes;
+public:
+    Shapes();
+    ~Shapes();
+    void add(Shape *);
+    void draw();
+    void update();
+    bool contains(int, int);
 };
 
 #endif /* Shape_hpp */

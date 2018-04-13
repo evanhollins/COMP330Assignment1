@@ -18,22 +18,20 @@ Map::Map(int _x, int _y) {
     
     road = new Road(Point(x / 2, y / 2), x, 150);
     
-    shapes.push_back(lake);
-    shapes.push_back(base);
-    shapes.push_back(road);
+    house = new House(600, 200, 50);
+    
+    shapes.add(lake);
+    shapes.add(base);
+    shapes.add(road);
     
 }
 
 Map::~Map() {
-    for(int i = 0; i < shapes.size(); i++) {
-        delete shapes[i];
-    }
 }
 
 void Map::draw() {
-    for(int i = 0; i < shapes.size(); i++) {
-        shapes[i]->draw();
-    }
+    shapes.draw();
+    house->draw();
 }
 
 void Map::changeSize(int _x, int _y) {

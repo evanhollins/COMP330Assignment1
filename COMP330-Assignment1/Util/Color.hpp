@@ -36,6 +36,10 @@ namespace Color {
     const Color FIRE_ORANGE{0.97, 0.58, 0.07, 1.0};
     const Color FIRE_YELLOW {1.0, 0.91, 0.45, 1.0};
     const Color CLEAR {0.0, 0.0, 0.0, 0.0};
+    const Color SHADOW {0.0, 0.0, 0.0, 0.2};
+    const Color ROOF_GREEN_LIGHT {0.67, 0.90, 0.20, 1.0};
+    const Color ROOF_GREEN {0.65, 0.88, 0.18, 1.0};
+    const Color ROOF_GREEN_DARK {0.63, 0.86, 0.16, 1.0};
 }
 
 #endif

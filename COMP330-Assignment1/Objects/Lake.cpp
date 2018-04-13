@@ -13,23 +13,16 @@ Lake::Lake(int _x, int _y, int _size) {
     y = _y;
     size = _size;
     
-    shapes.push_back(new ClosedCircle(x, y, size, Color::WATER));
+    shapes.add(new ClosedCircle(x, y, size, Color::WATER));
 }
 
 Lake::~Lake() {
 }
 
 void Lake::draw() {
-    for(int i = 0; i < shapes.size(); i++) {
-        shapes[i]->draw();
-    }
+    shapes.draw();
 }
 
 bool Lake::contains(int _x, int _y) {
-    for(int i = 0; i < shapes.size(); i++) {
-        if(shapes[i]->contains(_x, _y)) {
-            return true;
-        }
-    }
-    return false;
+    return shapes.contains(_x, _y);
 }

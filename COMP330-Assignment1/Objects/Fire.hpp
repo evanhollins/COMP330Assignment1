@@ -10,7 +10,6 @@
 #define Fire_hpp
 
 #include <stdio.h>
-#include <vector>
 
 #include "Shape.hpp"
 #include "Color.hpp"
@@ -23,7 +22,7 @@ class Fire: public Shape {
 public:
     int x;
     int y;
-    std::vector<Shape *> shapes;
+    Shapes shapes;
     Fire(int x, int y);
     ~Fire();
     void update() {};
