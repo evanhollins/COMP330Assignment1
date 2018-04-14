@@ -18,11 +18,22 @@ Map::Map(int _x, int _y) {
     
     road = new Road(Point(x / 2, y / 2), x, 150);
     
-    house = new House(600, 200, 50);
-    
     shapes.add(lake);
     shapes.add(base);
     shapes.add(road);
+    
+    int houseTopRowY = y / 2 - 150;
+    int houseBottomRowY = y / 2 + 150;
+    int houseSize = 80;
+    int houseSpacing = houseSize * 2;
+    int houseOffset = houseSize;
+    int numberOfHouses = 6;
+    
+    for (int i = 0; i < numberOfHouses; i++) {
+        houses.add(new House(i * houseSpacing + houseOffset, houseTopRowY, houseSize));
+        houses.add(new House(i * houseSpacing + houseOffset, houseBottomRowY, houseSize));
+    }
+    
     
 }
 
@@ -31,7 +42,7 @@ Map::~Map() {
 
 void Map::draw() {
     shapes.draw();
-    house->draw();
+    houses.draw();
 }
 
 void Map::changeSize(int _x, int _y) {

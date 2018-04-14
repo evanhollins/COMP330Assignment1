@@ -40,6 +40,15 @@ namespace Color {
     const Color ROOF_GREEN_LIGHT {0.67, 0.90, 0.20, 1.0};
     const Color ROOF_GREEN {0.65, 0.88, 0.18, 1.0};
     const Color ROOF_GREEN_DARK {0.63, 0.86, 0.16, 1.0};
+    const Color ROOF_BRICK_LIGHT {0.83, 0.53, 0.30, 1.0};
+    const Color ROOF_BRICK {0.81, 0.51, 0.28, 1.0};
+    const Color ROOF_BRICK_DARK {0.79, 0.49, 0.26, 1.0};
+    const Color ROOF_TAN_LIGHT {0.88, 0.88, 0.68, 1.0};
+    const Color ROOF_TAN {0.86, 0.86, 0.66, 1.0};
+    const Color ROOF_TAN_DARK {0.84, 0.84, 0.64, 1.0};
+    const Color ROOF_RED_LIGHT {1.0, 0.66, 0.53, 1.0};
+    const Color ROOF_RED {0.98, 0.64, 0.51, 1.0};
+    const Color ROOF_RED_DARK {0.96, 0.62, 0.49, 1.0};
 }
 
 #endif

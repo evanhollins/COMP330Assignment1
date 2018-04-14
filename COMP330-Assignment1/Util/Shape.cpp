@@ -8,3 +8,37 @@
 
 #include "Shape.hpp"
 
+Shapes::Shapes() {
+    
+}
+
+Shapes::~Shapes() {
+    for(int i = 0; i < shapes.size(); i++) {
+        delete shapes[i];
+    }
+}
+
+void Shapes::add(Shape * shape) {
+    shapes.push_back(shape);
+}
+
+void Shapes::draw() {
+    for (int i = 0; i < shapes.size(); i++) {
+        shapes[i]->draw();
+    }
+}
+
+void Shapes::update() {
+    for (int i = 0; i < shapes.size(); i++) {
+        shapes[i]->update();
+    }
+}
+
+bool Shapes::contains(int x, int y) {
+    for (int i = 0; i < shapes.size(); i++) {
+        if(shapes[i]->contains(x, y)) {
+            return true;
+        }
+    }
+    return false;
+}

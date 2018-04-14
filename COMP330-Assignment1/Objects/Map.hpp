@@ -23,7 +23,7 @@ private:
     SESBase * base;
     Lake * lake;
     Road * road;
-    House * house;
+    Shapes houses;
     Shapes shapes;
     int x;
     int y;

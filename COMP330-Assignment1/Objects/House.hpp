@@ -10,6 +10,7 @@
 #define House_hpp
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "Shape.hpp"
 #include "Color.hpp"
@@ -20,6 +21,9 @@
 
 class House: public Shape {
 private:
+    Color::Color roofColorLight;
+    Color::Color roofColor;
+    Color::Color roofColorDark;
     Point p;
     int size;
     Shapes shapes;
