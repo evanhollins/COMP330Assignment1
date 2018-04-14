@@ -14,33 +14,24 @@ Road::Road(Point _p1, int _length, int _width) {
     length = _length;
     width = _width;
     
-    shapes.push_back(new Rectangle(p1, length, width, Color::ROAD));
+    shapes.add(new Rectangle(p1, length, width, Color::ROAD));
     Line * middleLine = new Line(p1.x - length/2, p1.y,
                                  p1.x + length/2, p1.y,
                                  10, Color::WHITE);
     middleLine->dashed = true;
     middleLine->lineStippleMultiplier = 32;
-    shapes.push_back(middleLine);
+    shapes.add(middleLine);
     
 }
 
 Road::~Road() {
-    for (int i = 0; i < shapes.size(); i++) {
-        delete shapes[i];
-    }
+
 }
 
 void Road::draw() {
-    for (int i = 0; i < shapes.size(); i++) {
-        shapes[i]->draw();
-    }
+    shapes.draw();
 }
 
 bool Road::contains(int x, int y) {
-    for (int i = 0; i < shapes.size(); i++) {
-        if(shapes[i]->contains(x, y)) {
-            return true;
-        }
-    }
-    return false;
+    return shapes.contains(x, y);
 }

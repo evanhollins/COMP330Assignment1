@@ -22,7 +22,7 @@ class SESBase: public Shape {
 public:
     Point * location;
     int size;
-    vector<Shape *> shapes;
+    Shapes shapes;
     SESBase(int _x, int _y);
     ~SESBase();
     void update() {};

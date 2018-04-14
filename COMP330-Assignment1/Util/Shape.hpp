@@ -32,6 +32,8 @@ public:
     void draw();
     void update();
     bool contains(int, int);
+    unsigned long size();
+    Shape * get(int i);
 };
 
 #endif /* Shape_hpp */

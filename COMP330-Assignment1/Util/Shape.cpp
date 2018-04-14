@@ -42,3 +42,11 @@ bool Shapes::contains(int x, int y) {
     }
     return false;
 }
+
+unsigned long Shapes::size() {
+    return shapes.size();
+}
+
+Shape * Shapes::get(int i) {
+    return shapes[i];
+}

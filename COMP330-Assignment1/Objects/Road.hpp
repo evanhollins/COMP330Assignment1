@@ -21,7 +21,7 @@ public:
     Point p1;
     int length;
     int width;
-    vector<Shape *> shapes;
+    Shapes shapes;
     Road(Point _p1, int _length, int _width);
     ~Road();
     

@@ -29,6 +29,7 @@ private:
     Shapes shapes;
     Shapes burntDownShapes;
     int onFire = 0;
+    int onFireCycles = 0;
     bool burntDown = false;
 public:
     House(int x, int y, int size);
@@ -36,9 +37,11 @@ public:
     ~House();
     void init();
 
-    void update() {};
+    void update();
     void draw();
     bool contains(int x, int y);
+    
+    void setFire();
 };
 
 #endif /* House_hpp */

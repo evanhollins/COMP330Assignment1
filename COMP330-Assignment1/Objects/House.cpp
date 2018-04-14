@@ -38,8 +38,6 @@ void House::init() {
             roofColor = Color::ROOF_BRICK;
             roofColorDark = Color::ROOF_BRICK_DARK;
             break;
-        default:
-            std::cout << "aghhhh" << endl;
     }
     
     
@@ -53,11 +51,28 @@ void House::init() {
     shapes.add(new Triangle(p, topLeftCorner, bottomLeftBorner, roofColor));
     shapes.add(new Triangle(p, bottomLeftBorner, bottomRightCorner, roofColorDark));
     
-    burntDownShapes.add(new ClosedCircle(p.x, p.y, size, Color::BLACK));
+    Color::Color ashes = Color::BLACK;
+    ashes.a = 0.6;
+    burntDownShapes.add(new ClosedCircle(p.x, p.y, size/2, ashes));
 }
 
 House::~House() {
     
+}
+
+void House::update() {
+    if(onFire > 0) {
+        onFireCycles++;
+    }
+    if(onFireCycles > 300) {
+        if(onFire == 4) {
+            burntDown = true;
+            onFire = 0;
+        } else {
+            onFire++;
+        }
+        onFireCycles = 0;
+    }
 }
 
 void House::draw() {
@@ -74,4 +89,8 @@ bool House::contains(int x, int y) {
     } else {
         return shapes.contains(x, y);
     }
+}
+
+void House::setFire() {
+    onFire = 1;
 }
