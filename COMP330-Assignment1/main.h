@@ -18,7 +18,7 @@ using namespace std;
 #include "Color.hpp"
 #include "Map.hpp"
 #include "Helicopter.hpp"
-#include "WaterBar.hpp"
+#include "Bar.hpp"
 #include "Line.hpp"
 #include "Road.hpp"
 
@@ -35,10 +35,13 @@ using namespace std;
 
 #define WATER_FILL_RATE 0.01
 #define WATER_RELEASE_RATE 0.03
+#define FUEL_RELEASE_RATE 0.001
+#define FUEL_FILL_RATE 0.01
 
 Color::Color background = Color::BACKGROUND;
 Map * map;
 Helicopter * helicopter;
-WaterBar * waterBar;
+Bar * waterBar;
+Bar * fuelBar;
 
 #endif /* main_h */

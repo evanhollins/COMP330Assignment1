@@ -1,13 +1,13 @@
 //
-//  FuelBar.hpp
+//  Bar.hpp
 //  COMP330-Assignment1
 //
-//  Created by Evan Hollins on 4/11/18.
+//  Created by Evan Hollins on 4/3/18.
 //  Copyright © 2018 Evan Hollins. All rights reserved.
 //
 
-#ifndef FuelBar_hpp
-#define FuelBar_hpp
+#ifndef Bar_hpp
+#define Bar_hpp
 
 #include <stdio.h>
 #include <vector>
@@ -17,22 +17,23 @@
 #include "Shape.hpp"
 #include "Rectangle.hpp"
 
-#define FUEL_BAR_MIN_FILLED 0.05
-#define FUEL_BAR_MAX_FILLED 1
+#define BAR_MIN_FILLED 0.05
+#define BAR_MAX_FILLED 1
 #define PADDING 2
 
-class FuelBar: public Shape {
+class Bar: public Shape {
 private:
     Rectangle * background;
     Rectangle * foreground;
+    Color::Color color;
     float filled;
 public:
     int x;
     int y;
     int height;
     int width;
-    FuelBar(int _x, int _y, int _width, int _height);
-    ~FuelBar();
+    Bar(int _x, int _y, int _width, int _height, Color::Color);
+    ~Bar();
     void draw();
     void update() {};
     bool contains(int _x, int _y) { return false; };
@@ -45,5 +46,5 @@ public:
     bool isFull();
     bool isEmpty();
 };
+#endif /* Bar_hpp */
 
-#endif /* FuelBar_hpp */

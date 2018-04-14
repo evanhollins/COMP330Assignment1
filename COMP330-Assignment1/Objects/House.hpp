@@ -18,6 +18,10 @@
 #include "Triangle.hpp"
 #include "Circle.hpp"
 #include "Rectangle.hpp"
+#include "Fire.hpp"
+
+#define HOUSE_MAX_FIRE 4
+#define HOUSE_MAX_FIRE_CYCLES 600
 
 class House: public Shape {
 private:
@@ -28,7 +32,8 @@ private:
     int size;
     Shapes shapes;
     Shapes burntDownShapes;
-    int onFire = 0;
+    Fire * fire[4];
+    int onFire = 1;
     int onFireCycles = 0;
     bool burntDown = false;
 public:

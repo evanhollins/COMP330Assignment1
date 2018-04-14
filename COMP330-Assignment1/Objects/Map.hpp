@@ -32,6 +32,7 @@ public:
     Map(int _x, int _y);
     ~Map();
     void draw();
+    void update();
     void changeSize(int _x, int _y);
     bool inLake(int _x, int _y);
     bool inBase(int _x, int _y);

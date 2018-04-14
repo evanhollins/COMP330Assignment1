@@ -27,6 +27,8 @@ enum MENU {
 
 void init(void)   /* initialization function  */
 {
+    srand((unsigned int) time(NULL));
+    
     // Enable blending
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -37,10 +39,15 @@ void init(void)   /* initialization function  */
                                 WINDOW_SIZE_Y/2,
                                 HELICOPTER_SIZE);
     
-    waterBar = new WaterBar(WINDOW_SIZE_X - WINDOW_SIZE_X / 20,
-                            WINDOW_SIZE_Y / 20,
-                            90,
-                            20);
+    waterBar = new Bar(WINDOW_SIZE_X - 10,
+                            10,
+                            100,
+                            20, Color::WATER);
+
+    fuelBar = new Bar(WINDOW_SIZE_X - 10,
+                       40,
+                       90,
+                       20, Color::FUEL);
     
     glClearColor(background.r,
                  background.g,
@@ -79,6 +86,7 @@ void update(int v) {
     }
     
     helicopter->update();
+    map->update();
     
     glutPostRedisplay();
     glutTimerFunc(MILLISECONDS_PER_SECOND / FRAMERATE, update, 0);

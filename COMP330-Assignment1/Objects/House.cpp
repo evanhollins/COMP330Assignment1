@@ -41,6 +41,7 @@ void House::init() {
     }
     
     
+    
     Point topRightCorner = Point(p.x + size/2, p.y + size/2);
     Point topLeftCorner = Point(p.x - size/2, p.y + size/2);
     Point bottomRightCorner = Point(p.x + size/2, p.y - size/2);
@@ -50,6 +51,12 @@ void House::init() {
     shapes.add(new Triangle(p, topRightCorner, bottomRightCorner, roofColor));
     shapes.add(new Triangle(p, topLeftCorner, bottomLeftBorner, roofColor));
     shapes.add(new Triangle(p, bottomLeftBorner, bottomRightCorner, roofColorDark));
+
+    fire[0] = new Fire(p.x + size/4, p.y + size/4);
+    fire[1] = new Fire(p.x + size/4, p.y - size/4);
+    fire[2] = new Fire(p.x - size/4, p.y + size/4);
+    fire[3] = new Fire(p.x - size/4, p.y - size/4);
+    std::random_shuffle(&fire[0], &fire[3]);
     
     Color::Color ashes = Color::BLACK;
     ashes.a = 0.6;
@@ -64,8 +71,8 @@ void House::update() {
     if(onFire > 0) {
         onFireCycles++;
     }
-    if(onFireCycles > 300) {
-        if(onFire == 4) {
+    if(onFireCycles > HOUSE_MAX_FIRE_CYCLES) {
+        if(onFire == HOUSE_MAX_FIRE) {
             burntDown = true;
             onFire = 0;
         } else {
@@ -80,6 +87,9 @@ void House::draw() {
         burntDownShapes.draw();
     } else {
         shapes.draw();
+        for (int i = 0; i < onFire; i++) {
+            fire[i]->draw();
+        }
     }
 }
 

@@ -12,7 +12,7 @@ Map::Map(int _x, int _y) {
     x = _x;
     y = _y;
     
-    lake = new Lake(600, 600, 40);
+    lake = new Lake(800, 650, 70);
     
     base = new SESBase(80, 80);
     
@@ -43,6 +43,11 @@ Map::~Map() {
 void Map::draw() {
     shapes.draw();
     houses.draw();
+}
+
+void Map::update() {
+    houses.update();
+    shapes.update();
 }
 
 void Map::changeSize(int _x, int _y) {
