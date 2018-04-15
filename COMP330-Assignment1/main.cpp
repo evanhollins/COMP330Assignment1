@@ -17,6 +17,7 @@ struct Globals {
     bool draggingMouseStartedInHelicopter = false;
     bool helicopterFlying = true;
     bool releasingWater = false;
+    int releasingWaterCount = 0;
     bool running = true;
 } globals;
 
@@ -39,15 +40,16 @@ void init(void)   /* initialization function  */
                                 WINDOW_SIZE_Y/2,
                                 HELICOPTER_SIZE);
     
-    waterBar = new Bar(WINDOW_SIZE_X - 10,
-                            10,
+    waterBar = new Bar(WINDOW_SIZE_X - 60,
+                            50,
                             100,
                             20, Color::WATER);
 
-    fuelBar = new Bar(WINDOW_SIZE_X - 10,
-                       40,
-                       90,
+    fuelBar = new Bar(WINDOW_SIZE_X - 60,
+                       20,
+                       100,
                        20, Color::FUEL);
+    fuelBar->setFilled(1.0);
     
     glClearColor(background.r,
                  background.g,
@@ -58,37 +60,61 @@ void init(void)   /* initialization function  */
     gluOrtho2D(0, WINDOW_SIZE_X, WINDOW_SIZE_Y, 0); /* defines world window */
 }
 
+void reset() {
+    delete map;
+    delete helicopter;
+    delete waterBar;
+    delete fuelBar;
+    init();
+}
+
 void update(int v) {
-    if(!globals.running) {
-        return;
-    }
-    
-    if(globals.draggingMouse &&
-       globals.draggingMouseStartedInHelicopter) {
-        globals.helicopterFlying = true;
-        helicopter->takeoff();
-        helicopter->setTargetX(globals.mouseX);
-        helicopter->setTargetY(globals.mouseY);
-    }
-    
-    if(!globals.helicopterFlying) {
-        helicopter->setTargetX(helicopter->getX());
-        helicopter->setTargetY(helicopter->getY());
-        helicopter->land();
-    }
-    
-    if(map->inLake(helicopter->getX(), helicopter->getY())) {
-        waterBar->increaseFilled(WATER_FILL_RATE);
-    } else {
-        if(globals.releasingWater && !waterBar->isEmpty()) {
-            waterBar->decreaseFilled(WATER_RELEASE_RATE);
+    if(globals.running) {
+        
+        if(fuelBar->isEmpty()) {
+            helicopter->land();
+            globals.helicopterFlying = false;
+        } else if(globals.draggingMouse &&
+           globals.draggingMouseStartedInHelicopter) {
+            globals.helicopterFlying = true;
+            helicopter->takeoff();
+            helicopter->setTargetX(globals.mouseX);
+            helicopter->setTargetY(globals.mouseY);
         }
+        
+        if(!globals.helicopterFlying) {
+            helicopter->setTargetX(helicopter->getX());
+            helicopter->setTargetY(helicopter->getY());
+            helicopter->land();
+        }
+        
+        if(map->inLake(helicopter->getX(), helicopter->getY())) {
+            waterBar->increaseFilled(WATER_FILL_RATE);
+        } else {
+            if(globals.releasingWater && !waterBar->isEmpty()) {
+                globals.releasingWaterCount++;
+            }
+            if(globals.releasingWaterCount > WATER_RELEASE_COUNT_MAX) {
+                waterBar->decreaseFilled(WATER_RELEASE_RATE);
+                helicopter->dropWater();
+                map->water(helicopter->getX(), helicopter->getY());
+                globals.releasingWaterCount = 0;
+            }
+        }
+        
+        if(map->inBase(helicopter->getX(), helicopter->getY()) && !globals.helicopterFlying) {
+            fuelBar->increaseFilled(FUEL_FILL_RATE);
+        } else {
+            fuelBar->decreaseFilled(FUEL_RELEASE_RATE);
+        }
+        
+        helicopter->update();
+        map->update();
+        
+        glutPostRedisplay();
     }
     
-    helicopter->update();
-    map->update();
     
-    glutPostRedisplay();
     glutTimerFunc(MILLISECONDS_PER_SECOND / FRAMERATE, update, 0);
 }
 
@@ -103,6 +129,7 @@ void displayCB(void) /* display callback function,
                  background.a); /* set background color */
     map->draw();
     waterBar->draw();
+    fuelBar->draw();
     helicopter->draw();
     glutSwapBuffers();
 }
@@ -113,8 +140,16 @@ void keyCB(unsigned char key, int x, int y) {
         case 'q':
             exit(0);
             break;
+        case 'p':
+            globals.running = false;
+            break;
+        case 'r':
+            globals.running = true;
+            break;
         case ' ':
-            globals.releasingWater = true;
+            if(!globals.releasingWater) {
+                globals.releasingWater = true;
+            }
             break;
         default:
             break;
@@ -125,6 +160,7 @@ void keyUp(unsigned char key, int x, int y) {
     switch (key) {
         case ' ':
             globals.releasingWater = false;
+            globals.releasingWaterCount = 0;
             break;
             
         default:
@@ -138,8 +174,7 @@ void menuCB(int menu) {
             exit(0);
             break;
         case RESET:
-            cout << "reset" << endl;
-            
+            reset();
         default:
             break;
     }

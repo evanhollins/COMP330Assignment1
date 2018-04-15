@@ -9,8 +9,7 @@
 #include "Fire.hpp"
 
 Fire::Fire(int x, int y) {
-    this->x = x;
-    this->y = y;
+    setPoint(x, y);
 
     shapes.add(new ClosedCircle(x, y, FIRE_SIZE, Color::FIRE_RED));
     shapes.add(new Triangle(Point(x - FIRE_SIZE*0.87, y - FIRE_SIZE*0.5), Point(x + FIRE_SIZE*0.88, y - FIRE_SIZE*0.5), Point(x, y - FIRE_SIZE*2.2), Color::FIRE_RED));

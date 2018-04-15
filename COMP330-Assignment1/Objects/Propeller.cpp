@@ -9,15 +9,14 @@
 #include "Propeller.hpp"
 
 Propellor::Propellor(int _x, int _y, int _radius) {
-    x = _x;
-    y = _y;
+    setPoint(_x, _y);
     radius = _radius;
     angle = 0;
     spinning = true;
     color = Color::GRAY;
     Color::Color backgroundColor = Color::GRAY;
     backgroundColor.a = 0.2;
-    propBackground = new ClosedCircle(x, y, radius, backgroundColor);
+    propBackground = new ClosedCircle(p.x, p.y, radius, backgroundColor);
 }
 Propellor::~Propellor() {
     delete propBackground;
@@ -33,7 +32,7 @@ void Propellor::draw() {
     propBackground->draw();
     color.set();
     glPushMatrix();
-    glTranslatef(x, y, 0);
+    p.translate();
     glRotatef(angle, 0, 0, 1);
     for(int i = 0; i < 3; i++) {
         glBegin(GL_TRIANGLE_FAN);

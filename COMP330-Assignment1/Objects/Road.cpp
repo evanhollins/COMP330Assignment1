@@ -9,14 +9,14 @@
 #include "Road.hpp"
 
 Road::Road(Point _p1, int _length, int _width) {
-    p1 = _p1;
+    p = _p1;
     
     length = _length;
     width = _width;
     
-    shapes.add(new Rectangle(p1, length, width, Color::ROAD));
-    Line * middleLine = new Line(p1.x - length/2, p1.y,
-                                 p1.x + length/2, p1.y,
+    shapes.add(new Rectangle(p, length, width, Color::ROAD));
+    Line * middleLine = new Line(p.x - length/2, p.y,
+                                 p.x + length/2, p.y,
                                  10, Color::WHITE);
     middleLine->dashed = true;
     middleLine->lineStippleMultiplier = 32;

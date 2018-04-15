@@ -9,7 +9,7 @@
 #include "SESBase.hpp"
 
 SESBase::SESBase(int _x, int _y) {
-    location = new Point(_x, _y);
+    setPoint(_x, _y);
     
     shapes.add(new Rectangle(_x,
                                    _y,
@@ -47,7 +47,6 @@ SESBase::SESBase(int _x, int _y) {
 }
 
 SESBase::~SESBase() {
-    delete location;
 }
 
 bool SESBase::contains(int _x, int _y) {

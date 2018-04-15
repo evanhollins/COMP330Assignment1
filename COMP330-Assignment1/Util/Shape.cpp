@@ -8,6 +8,23 @@
 
 #include "Shape.hpp"
 
+Shape::Shape() {
+    p = Point(0, 0);
+}
+
+Point Shape::getPoint() {
+    return p;
+}
+
+void Shape::setPoint(Point p) {
+    this->p = p;
+}
+
+void Shape::setPoint(int x, int y) {
+    p.x = x;
+    p.y = y;
+}
+
 Shapes::Shapes() {
     
 }
@@ -23,15 +40,11 @@ void Shapes::add(Shape * shape) {
 }
 
 void Shapes::draw() {
-    for (int i = 0; i < shapes.size(); i++) {
-        shapes[i]->draw();
-    }
+    forEach([](Shape * s) {s->draw();});
 }
 
 void Shapes::update() {
-    for (int i = 0; i < shapes.size(); i++) {
-        shapes[i]->update();
-    }
+    forEach([](Shape * s) {s->update();});
 }
 
 bool Shapes::contains(int x, int y) {
@@ -49,4 +62,14 @@ unsigned long Shapes::size() {
 
 Shape * Shapes::get(int i) {
     return shapes[i];
+}
+
+void Shapes::forEach(void (*func) (Shape *)) {
+    for (int i = 0; i < shapes.size(); i++) {
+        func(shapes[i]);
+    }
+}
+
+std::vector<Shape *> Shapes::get() {
+    return shapes;
 }

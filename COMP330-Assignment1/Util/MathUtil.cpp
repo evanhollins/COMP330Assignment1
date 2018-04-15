@@ -62,3 +62,10 @@ int modDif(int _x, int _y, int _mod) {
 int limit(int _x, int _limit) {
     return fmin(abs(_x), abs(_limit)) * sign(_x);
 }
+
+bool inRange(int x, int limit1, int limit2) {
+    if(limit1 > limit2) {
+        return x <= limit1 && x >= limit2;
+    }
+    return x >= limit1 && x <= limit2;
+}

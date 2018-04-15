@@ -28,8 +28,6 @@ private:
     Color::Color color;
     float filled;
 public:
-    int x;
-    int y;
     int height;
     int width;
     Bar(int _x, int _y, int _width, int _height, Color::Color);

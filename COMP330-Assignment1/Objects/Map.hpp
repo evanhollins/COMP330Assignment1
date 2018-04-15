@@ -36,6 +36,7 @@ public:
     void changeSize(int _x, int _y);
     bool inLake(int _x, int _y);
     bool inBase(int _x, int _y);
+    void water(int _x, int _y);
 };
 
 #endif /* Map_hpp */

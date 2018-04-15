@@ -16,6 +16,8 @@
 		37714836207F595D0050755B /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37714834207F595D0050755B /* Triangle.cpp */; };
 		37714839207F6A930050755B /* Road.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37714837207F6A930050755B /* Road.cpp */; };
 		3771483C2080BAE70050755B /* House.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3771483A2080BAE70050755B /* House.cpp */; };
+		37778D182082C3F100153FBE /* WaterDrop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37778D162082C3F100153FBE /* WaterDrop.cpp */; };
+		37778D1E208305E900153FBE /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37778D1C208305E900153FBE /* Animation.cpp */; };
 		37B12DFE2060B258001DDC56 /* Helicopter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B12DFC2060B258001DDC56 /* Helicopter.cpp */; };
 		37B12E002060B322001DDC56 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B12DFF2060B322001DDC56 /* Color.cpp */; };
 		37B343AE2072FF320085F6FE /* MathUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37B343AC2072FF320085F6FE /* MathUtil.cpp */; };
@@ -60,6 +62,10 @@
 		37714838207F6A930050755B /* Road.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Road.hpp; sourceTree = "<group>"; };
 		3771483A2080BAE70050755B /* House.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = House.cpp; sourceTree = "<group>"; };
 		3771483B2080BAE70050755B /* House.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = House.hpp; sourceTree = "<group>"; };
+		37778D162082C3F100153FBE /* WaterDrop.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WaterDrop.cpp; sourceTree = "<group>"; };
+		37778D172082C3F100153FBE /* WaterDrop.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WaterDrop.hpp; sourceTree = "<group>"; };
+		37778D1C208305E900153FBE /* Animation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
+		37778D1D208305E900153FBE /* Animation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Animation.hpp; sourceTree = "<group>"; };
 		37AA13AF2082134E00EFAA03 /* Bar.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Bar.hpp; sourceTree = "<group>"; };
 		37B12DFC2060B258001DDC56 /* Helicopter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Helicopter.cpp; sourceTree = "<group>"; };
 		37B12DFD2060B258001DDC56 /* Helicopter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Helicopter.hpp; sourceTree = "<group>"; };
@@ -151,6 +157,17 @@
 			path = Objects;
 			sourceTree = "<group>";
 		};
+		37778D152082C3D600153FBE /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				37778D162082C3F100153FBE /* WaterDrop.cpp */,
+				37778D172082C3F100153FBE /* WaterDrop.hpp */,
+				37778D1C208305E900153FBE /* Animation.cpp */,
+				37778D1D208305E900153FBE /* Animation.hpp */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		37E8AFFF2059313500CE56BF = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +188,7 @@
 		37E8B00A2059313500CE56BF /* COMP330-Assignment1 */ = {
 			isa = PBXGroup;
 			children = (
+				37778D152082C3D600153FBE /* Animations */,
 				375BA218206D1D8F000C8A7A /* Objects */,
 				375BA217206D1D79000C8A7A /* Util */,
 				375BA216206D1D59000C8A7A /* Shapes */,
@@ -246,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37778D182082C3F100153FBE /* WaterDrop.cpp in Sources */,
 				3749D3AA20748CBD00184C15 /* Point.cpp in Sources */,
 				3749D3AD2074AC5C00184C15 /* SESBase.cpp in Sources */,
 				37B343B120731FFF0085F6FE /* Lake.cpp in Sources */,
@@ -259,6 +278,7 @@
 				375BA215206CFFBA000C8A7A /* Propeller.cpp in Sources */,
 				37B343AE2072FF320085F6FE /* MathUtil.cpp in Sources */,
 				37714836207F595D0050755B /* Triangle.cpp in Sources */,
+				37778D1E208305E900153FBE /* Animation.cpp in Sources */,
 				37E5FBE1206CBF9900C6977D /* Rectangle.cpp in Sources */,
 				37E8B00C2059313500CE56BF /* main.cpp in Sources */,
 				3749D3B32075ECFE00184C15 /* Map.cpp in Sources */,

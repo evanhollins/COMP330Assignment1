@@ -28,7 +28,6 @@ private:
     Color::Color roofColorLight;
     Color::Color roofColor;
     Color::Color roofColorDark;
-    Point p;
     int size;
     Shapes shapes;
     Shapes burntDownShapes;
@@ -47,6 +46,7 @@ public:
     bool contains(int x, int y);
     
     void setFire();
+    void water();
 };
 
 #endif /* House_hpp */

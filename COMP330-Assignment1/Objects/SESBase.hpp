@@ -20,7 +20,6 @@
 
 class SESBase: public Shape {
 public:
-    Point * location;
     int size;
     Shapes shapes;
     SESBase(int _x, int _y);

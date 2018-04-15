@@ -62,3 +62,12 @@ bool Map::inLake(int _x, int _y) {
 bool Map::inBase(int _x, int _y) {
     return base->contains(_x, _y);
 }
+
+void Map::water(int _x, int _y) {
+    for(Shape * s: houses.get()) {
+        if(s->getPoint().distanceTo(_x, _y) < 50) {
+            House * h = (House *) s;
+            h->water();
+        }
+    }
+}

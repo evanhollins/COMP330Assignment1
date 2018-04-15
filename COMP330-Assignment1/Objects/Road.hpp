@@ -18,7 +18,6 @@
 
 class Road: public Shape {
 public:
-    Point p1;
     int length;
     int width;
     Shapes shapes;

@@ -9,8 +9,7 @@
 #include "House.hpp"
 
 House::House(int x, int y, int size) {
-    this->p.x = x;
-    this->p.y = y;
+    p = Point(x, y);
     this->size = size;
     init();
 }
@@ -103,4 +102,9 @@ bool House::contains(int x, int y) {
 
 void House::setFire() {
     onFire = 1;
+}
+
+void House::water() {
+    onFire = 0;
+    onFireCycles = 0;
 }

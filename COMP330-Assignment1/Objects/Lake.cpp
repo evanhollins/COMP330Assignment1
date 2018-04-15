@@ -9,21 +9,20 @@
 #include "Lake.hpp"
 
 Lake::Lake(int _x, int _y, int _size) {
-    x = _x;
-    y = _y;
+    setPoint(_x, _y);
     size = _size;
     
-    shapes.add(new ClosedCircle(x, y, size, Color::WATER));
+    shapes.add(new ClosedCircle(p.x, p.y, size, Color::WATER));
     Color::Color darkerWater = Color::WATER;
     darkerWater.r -= 0.1;
     darkerWater.g -= 0.1;
     darkerWater.b -= 0.1;
-    shapes.add(new ClosedCircle(x, y, size*0.6, darkerWater));
+    shapes.add(new ClosedCircle(p.x + 5, p.y, size*0.8, darkerWater));
     Color::Color darkestWater = darkerWater;
     darkestWater.r -= 0.1;
     darkestWater.g -= 0.1;
     darkestWater.b -= 0.1;
-    shapes.add(new ClosedCircle(x, y, size*0.4, darkestWater));
+    shapes.add(new ClosedCircle(p.x + 10, p.y, size*0.4, darkestWater));
 }
 
 Lake::~Lake() {

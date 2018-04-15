@@ -27,5 +27,6 @@ int abs(int _x);
 int mod(int _x, int _mod);
 int modDif(int _x, int _y, int _mod);
 int limit(int _x, int limit);
+bool inRange(int x, int limit1, int limit2);
 
 #endif /* MathUtil_hpp */

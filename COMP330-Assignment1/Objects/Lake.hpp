@@ -20,8 +20,6 @@ class Lake: public Shape {
 private:
     Shapes shapes;
 public:
-    int x;
-    int y;
     int size;
     Lake(int _x, int _y, int _size);
     ~Lake();

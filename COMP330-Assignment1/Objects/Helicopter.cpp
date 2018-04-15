@@ -35,6 +35,7 @@ Helicopter::~Helicopter() {
 }
 
 void Helicopter::draw() {
+    animations.draw();
     glPushMatrix();
     location.translate();
     glRotatef(angle, 0, 0, 1);
@@ -78,6 +79,9 @@ void Helicopter::update() {
     for(int i = 0; i < shapes.size(); i++) {
         shapes[i]->update();
     }
+    
+    animations.update();
+    
     propellor->update();
 }
 
@@ -172,3 +176,6 @@ void Helicopter::takeoff() {
     propellor->spin();
 }
 
+void Helicopter::dropWater() {
+    animations.add(new WaterDrop(location));
+}

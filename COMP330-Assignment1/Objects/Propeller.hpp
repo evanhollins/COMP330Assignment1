@@ -19,8 +19,6 @@ using namespace std;
 
 class Propellor: public Shape {
 public:
-    int x;
-    int y;
     int radius;
     int angle;
     bool spinning;

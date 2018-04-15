@@ -16,18 +16,19 @@ using namespace std;
 #include "Color.hpp"
 #include "Shape.hpp"
 #include "Point.hpp"
+#include "MathUtil.hpp"
 
 class Rectangle: public Shape {
 public:
-    int size_x;
-    int size_y;
     int angle;
-    Point p;
+    Point p1;
+    Point p2;
     Color::Color color;
     
     Rectangle();
     Rectangle(int _x, int _y, int _size_x, int _size_y, Color::Color _color);
     Rectangle(Point p, int _size_x, int _size_y, Color::Color _color);
+    Rectangle(Point p1, Point p2, Color::Color _color);
     ~Rectangle();
     void draw();
     void update() {};

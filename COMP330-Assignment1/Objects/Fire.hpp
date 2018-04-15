@@ -20,8 +20,6 @@
 
 class Fire: public Shape {
 public:
-    int x;
-    int y;
     Shapes shapes;
     Fire(int x, int y);
     ~Fire();

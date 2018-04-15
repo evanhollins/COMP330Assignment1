@@ -23,37 +23,31 @@ protected:
     const float TWICEPI = 3.14159*2;
     
 public:
-    float radius;
+    int radius;
     Color::Color color;
     int x;
     int y;
     
-    int iterations;
-    Circle(int _x, int _y, float _radius, Color::Color _color):
-        x(_x), y(_y), radius(_radius), color(_color) {
-        iterations = FULL_CIRCLE_DEG;
-    };
-    ~Circle();
+    int iterations = FULL_CIRCLE_DEG;
     virtual void draw() =0;
     void update() {};
     bool contains(int _x, int _y);
+    
+    int getRadius();
+    void setRadius(int r);
 };
 
 
 class OpenCircle: public Circle {
 public:
-    OpenCircle(int _x, int _y, float _radius, Color::Color _color):
-        Circle(_x, _y, _radius, _color) {};
-    ~OpenCircle() = default;
-    virtual void draw();
+    OpenCircle(int _x, int _y, int _radius, Color::Color _color);
+    void draw();
 };
 
 class ClosedCircle: public Circle {
 public:
-    ClosedCircle(int _x, int _y, float _radius, Color::Color _color):
-        Circle(_x, _y, _radius, _color) {};
-    ~ClosedCircle() = default;
-    virtual void draw();
+    ClosedCircle(int _x, int _y, int _radius, Color::Color _color);
+    void draw();
 };
 
 #endif /* Circle_hpp */

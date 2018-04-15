@@ -24,6 +24,7 @@ using namespace std;
 #include "Rectangle.hpp"
 #include "Line.hpp"
 #include "Propeller.hpp"
+#include "WaterDrop.hpp"
 
 #define HELICOPTER_MAX_SPEED 2
 #define HELICOPTER_MAX_ANGLE_CHANGE 3
@@ -44,6 +45,7 @@ private:
     vector<Shape *> shapes;
     Propellor * propellor;
     Line * path;
+    Animations animations;
     
 public:
     Helicopter(int _x, int _y, int _size);
@@ -70,6 +72,7 @@ public:
     int getSpeed();
     void land();
     void takeoff();
+    void dropWater();
 };
 
 #endif

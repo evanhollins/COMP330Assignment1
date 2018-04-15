@@ -34,8 +34,9 @@ using namespace std;
 #define HELICOPTER_SIZE 50
 
 #define WATER_FILL_RATE 0.01
-#define WATER_RELEASE_RATE 0.03
-#define FUEL_RELEASE_RATE 0.001
+#define WATER_RELEASE_RATE 0.1
+#define WATER_RELEASE_COUNT_MAX 30
+#define FUEL_RELEASE_RATE 0.0003
 #define FUEL_FILL_RATE 0.01
 
 Color::Color background = Color::BACKGROUND;

@@ -9,14 +9,16 @@
 #include "Bar.hpp"
 
 Bar::Bar(int _x, int _y, int _width, int _height, Color::Color _color) {
-    x = _x;
-    y = _y;
+    setPoint(_x, _y);
     width = _width;
     height = _height;
     filled = BAR_MIN_FILLED;
+    color = _color;
     
-    background = new Rectangle(x, y, width, height, Color::BLACK);
-    foreground = new Rectangle(getFilledBarX(), y, getFilledBarWidth(), height - PADDING * 2, color);
+    background = new Rectangle(p.x, p.y, width, height, Color::BLACK);
+    Point foregroundTopRight = Point(p.x + width/2 - PADDING, p.y + height/2 - PADDING);
+    Point foregroundBottomLeft = Point(p.x + width/2 - getFilledBarX(), p.y - height/2 + PADDING);
+    foreground = new Rectangle(foregroundTopRight, foregroundBottomLeft, color);
 }
 
 Bar::~Bar() {
@@ -27,18 +29,18 @@ void Bar::draw() {
     foreground->draw();
 }
 
-float Bar::getFilledBarWidth() {
-    return (width - (PADDING * 2)) * filled;
-}
-
 float Bar::getFilledBarX() {
-    return ((width - (PADDING * 2)) * (1 - filled)) / 2 + x;
+    return (width - PADDING) * filled;
 }
 
 void Bar::setFilled(float _filled) {
-    filled = fmax(fmin(_filled, BAR_MAX_FILLED), BAR_MIN_FILLED);
-    foreground->p.x = getFilledBarX();
-    foreground->size_x = round(getFilledBarWidth());
+    filled = _filled;
+    if(filled > BAR_MAX_FILLED) {
+        filled = BAR_MAX_FILLED;
+    } else if(filled < BAR_MIN_FILLED) {
+        filled = BAR_MIN_FILLED;
+    }
+    foreground->p2.x = p.x + width/2 - getFilledBarX();
 }
 
 float Bar::getFilled() {
@@ -54,9 +56,9 @@ void Bar::decreaseFilled(float amount) {
 }
 
 bool Bar::isFull() {
-    return filled == BAR_MAX_FILLED;
+    return abs(filled - BAR_MAX_FILLED) < 0.0001;
 }
 
 bool Bar::isEmpty() {
-    return filled == BAR_MIN_FILLED;
+    return abs(filled - BAR_MIN_FILLED) < 0.0001;
 }

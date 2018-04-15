@@ -8,8 +8,26 @@
 
 #include "Circle.hpp"
 
-Circle::~Circle() {
-    
+int Circle::getRadius() {
+    return radius;
+}
+
+void Circle::setRadius(int r) {
+    radius = r;
+}
+
+OpenCircle::OpenCircle(int _x, int _y, int _radius, Color::Color _color) {
+    x = _x;
+    y = _y;
+    radius = _radius;
+    color = _color;
+}
+
+ClosedCircle::ClosedCircle(int _x, int _y, int _radius, Color::Color _color) {
+    x = _x;
+    y = _y;
+    radius = _radius;
+    color = _color;
 }
 
 bool Circle::contains(int _x, int _y) {
