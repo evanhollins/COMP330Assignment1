@@ -140,9 +140,6 @@ void keyCB(unsigned char key, int x, int y) {
             globals.running = true;
             break;
         case ' ':
-            if(!globals.releasingWater) {
-                globals.releasingWater = true;
-            }
             break;
         default:
             break;
