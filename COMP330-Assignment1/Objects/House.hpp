@@ -31,8 +31,9 @@ private:
     int size;
     Shapes shapes;
     Shapes burntDownShapes;
-    Fire * fire[4];
-    int onFire = 1;
+    Fire * potentialFire[4];
+    vector<Fire *> fire;
+    bool onFire = false;
     int onFireCycles = 0;
     bool burntDown = false;
 public:

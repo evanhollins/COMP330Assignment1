@@ -9,6 +9,8 @@
 #include "main.h"
 
 struct Globals {
+    int windowX = WINDOW_SIZE_X;
+    int windowY = WINDOW_SIZE_Y;
     int mouseX = -1;
     int mouseY = -1;
     int mouseDownX = -1;
@@ -17,7 +19,7 @@ struct Globals {
     bool draggingMouseStartedInHelicopter = false;
     bool helicopterFlying = true;
     bool releasingWater = false;
-    int releasingWaterCount = 0;
+    bool fillingWater = false;
     bool running = true;
 } globals;
 
@@ -34,30 +36,22 @@ void init(void)   /* initialization function  */
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
-    map = new Map(WINDOW_SIZE_X, WINDOW_SIZE_Y);
+    map = new Map(globals.windowX, globals.windowY);
     
-    helicopter = new Helicopter(WINDOW_SIZE_X/2,
-                                WINDOW_SIZE_Y/2,
+    helicopter = new Helicopter(globals.windowX/2,
+                                globals.windowY/2,
                                 HELICOPTER_SIZE);
     
-    waterBar = new Bar(WINDOW_SIZE_X - 60,
+    waterBar = new Bar(globals.windowX - 60,
                             50,
                             100,
                             20, Color::WATER);
 
-    fuelBar = new Bar(WINDOW_SIZE_X - 60,
+    fuelBar = new Bar(globals.windowX - 60,
                        20,
                        100,
                        20, Color::FUEL);
     fuelBar->setFilled(1.0);
-    
-    glClearColor(background.r,
-                 background.g,
-                 background.b,
-                 background.a); /* set background color */
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluOrtho2D(0, WINDOW_SIZE_X, WINDOW_SIZE_Y, 0); /* defines world window */
 }
 
 void reset() {
@@ -88,18 +82,17 @@ void update(int v) {
             helicopter->land();
         }
         
-        if(map->inLake(helicopter->getX(), helicopter->getY())) {
-            waterBar->increaseFilled(WATER_FILL_RATE);
-        } else {
-            if(globals.releasingWater && !waterBar->isEmpty()) {
-                globals.releasingWaterCount++;
+        if(globals.fillingWater) {
+            if(map->inLake(helicopter->getX(), helicopter->getY())) {
+                waterBar->increaseFilled(WATER_FILL_RATE);
+            } else {
+                globals.fillingWater = false;
             }
-            if(globals.releasingWaterCount > WATER_RELEASE_COUNT_MAX) {
-                waterBar->decreaseFilled(WATER_RELEASE_RATE);
-                helicopter->dropWater();
-                map->water(helicopter->getX(), helicopter->getY());
-                globals.releasingWaterCount = 0;
-            }
+        } else if(globals.releasingWater) {
+            waterBar->decreaseFilled(WATER_RELEASE_RATE);
+            helicopter->dropWater();
+            map->water(helicopter->getX(), helicopter->getY());
+            globals.releasingWater = false;
         }
         
         if(map->inBase(helicopter->getX(), helicopter->getY()) && !globals.helicopterFlying) {
@@ -159,8 +152,6 @@ void keyCB(unsigned char key, int x, int y) {
 void keyUp(unsigned char key, int x, int y) {
     switch (key) {
         case ' ':
-            globals.releasingWater = false;
-            globals.releasingWaterCount = 0;
             break;
             
         default:
@@ -198,7 +189,7 @@ void mouseMotion(int x, int y) {
 
 void mousePassiveMotion(int x, int y) {
     // If mouse is out of screen, set to be negative.
-    if(WINDOW_SIZE_X - x >= 0 && WINDOW_SIZE_Y - y >= 0 && x >= 0 && y >= 0) {
+    if(globals.windowX - x >= 0 && globals.windowY - y >= 0 && x >= 0 && y >= 0) {
         globals.mouseX = x;
         globals.mouseY = y;
     } else {
@@ -211,7 +202,28 @@ void handleClick(int x, int y) {
     if(map->inBase(x, y) && map->inBase(helicopter->getX(),
                                               helicopter->getY())) {
         globals.helicopterFlying = false;
+    } else if(helicopter->contains(x, y) && map->inLake(helicopter->getX(), helicopter->getY())) {
+        globals.fillingWater = true;
+    } else if(helicopter->contains(x, y) && !waterBar->isEmpty()) {
+        globals.releasingWater = true;
     }
+}
+
+void handleReshape(int x, int y) {
+    globals.windowX = x;
+    globals.windowY = y;
+    glClearColor(background.r,
+                 background.g,
+                 background.b,
+                 background.a); /* set background color */
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glViewport(0,0, x, y);
+    gluOrtho2D(0, globals.windowX, globals.windowY, 0); /* defines world window */
+    
+    map->changeSize(x, y);
+    fuelBar->update(globals.windowX - 60, 20);
+    waterBar->update(globals.windowX - 60, 50);
 }
 
 void mouseClicked(int button, int state, int x, int y) {
@@ -251,6 +263,7 @@ int main(int argc, char *argv[]) {
     glutMotionFunc(mouseMotion);
     glutMouseFunc(mouseClicked);
     
+    
     // Right Click Menu
     glutCreateMenu(menuCB);
     glutAddMenuEntry("Exit", EXIT);
@@ -259,6 +272,7 @@ int main(int argc, char *argv[]) {
     
     glutTimerFunc(0, update, 0);     // First timer call immediately
     init();      /* call init */
+    glutReshapeFunc(handleReshape);
     glutMainLoop(); /* show screen window, call display and
                      start processing events... */
     /* execution never reaches this point */

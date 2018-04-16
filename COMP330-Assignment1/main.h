@@ -35,7 +35,7 @@ using namespace std;
 
 #define WATER_FILL_RATE 0.01
 #define WATER_RELEASE_RATE 0.1
-#define WATER_RELEASE_COUNT_MAX 30
+#define WATER_RELEASE_COUNT_MAX 45
 #define FUEL_RELEASE_RATE 0.0003
 #define FUEL_FILL_RATE 0.01
 

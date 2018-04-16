@@ -51,15 +51,17 @@ void House::init() {
     shapes.add(new Triangle(p, topLeftCorner, bottomLeftBorner, roofColor));
     shapes.add(new Triangle(p, bottomLeftBorner, bottomRightCorner, roofColorDark));
 
-    fire[0] = new Fire(p.x + size/4, p.y + size/4);
-    fire[1] = new Fire(p.x + size/4, p.y - size/4);
-    fire[2] = new Fire(p.x - size/4, p.y + size/4);
-    fire[3] = new Fire(p.x - size/4, p.y - size/4);
-    std::random_shuffle(&fire[0], &fire[3]);
+    potentialFire[0] = new Fire(p.x + size/4, p.y + size/4);
+    potentialFire[1] = new Fire(p.x + size/4, p.y - size/4);
+    potentialFire[2] = new Fire(p.x - size/4, p.y + size/4);
+    potentialFire[3] = new Fire(p.x - size/4, p.y - size/4);
+    std::random_shuffle(&potentialFire[0], &potentialFire[3]);
     
     Color::Color ashes = Color::BLACK;
     ashes.a = 0.6;
     burntDownShapes.add(new ClosedCircle(p.x, p.y, size/2, ashes));
+    
+    setFire();
 }
 
 House::~House() {
@@ -71,11 +73,11 @@ void House::update() {
         onFireCycles++;
     }
     if(onFireCycles > HOUSE_MAX_FIRE_CYCLES) {
-        if(onFire == HOUSE_MAX_FIRE) {
+        if(fire.size() == HOUSE_MAX_FIRE) {
             burntDown = true;
-            onFire = 0;
+            onFire = false;
         } else {
-            onFire++;
+            fire.push_back(potentialFire[fire.size()]);
         }
         onFireCycles = 0;
     }
@@ -86,7 +88,7 @@ void House::draw() {
         burntDownShapes.draw();
     } else {
         shapes.draw();
-        for (int i = 0; i < onFire; i++) {
+        for (int i = 0; i < fire.size(); i++) {
             fire[i]->draw();
         }
     }
@@ -101,10 +103,14 @@ bool House::contains(int x, int y) {
 }
 
 void House::setFire() {
-    onFire = 1;
+    onFire = true;
+    fire.push_back(potentialFire[0]);
 }
 
 void House::water() {
-    onFire = 0;
+    onFire = false;
+    std::for_each(fire.begin(), fire.end(), [](Fire * f) {
+        f->douse();
+    });
     onFireCycles = 0;
 }

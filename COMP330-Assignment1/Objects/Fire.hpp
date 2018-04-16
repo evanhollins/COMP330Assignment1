@@ -19,14 +19,17 @@
 #define FIRE_SIZE 18
 
 class Fire: public Shape {
-public:
+private:
     Shapes shapes;
+    Shapes putOutShapes;
+    bool putOut;
+public:
     Fire(int x, int y);
     ~Fire();
     void update() {};
     void draw();
     bool contains(int _x, int _y);
-
+    void douse();
 };
 
 #endif /* Fire_hpp */

@@ -16,7 +16,7 @@ Map::Map(int _x, int _y) {
     
     base = new SESBase(80, 80);
     
-    road = new Road(Point(x / 2, y / 2), x, 150);
+    road = new Road(Point(0, y/2 - 75), Point(x, y/2 + 75));
     
     shapes.add(lake);
     shapes.add(base);
@@ -53,6 +53,8 @@ void Map::update() {
 void Map::changeSize(int _x, int _y) {
     x = _x;
     y = _y;
+    
+    road->update(Point(0, y/2 - 75), Point(x, y/2 + 75));
 }
 
 bool Map::inLake(int _x, int _y) {

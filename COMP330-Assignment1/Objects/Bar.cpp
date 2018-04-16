@@ -62,3 +62,18 @@ bool Bar::isFull() {
 bool Bar::isEmpty() {
     return abs(filled - BAR_MIN_FILLED) < 0.0001;
 }
+
+void Bar::update(int _x, int _y) {
+    setPoint(_x, _y);
+    
+    background->p1.x = _x + width/2;
+    background->p1.y = _y + height/2;
+    background->p2.x = _x - width/2;
+    background->p2.y = _y - height/2;
+    
+    foreground->p1.x = background->p1.x - PADDING;
+    foreground->p1.y = background->p1.y - PADDING;
+    foreground->p2.x = p.x + width/2 - getFilledBarX();
+    foreground->p2.y = background->p2.y + PADDING;
+    
+}

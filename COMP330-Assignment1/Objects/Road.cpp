@@ -8,15 +8,14 @@
 
 #include "Road.hpp"
 
-Road::Road(Point _p1, int _length, int _width) {
-    p = _p1;
+Road::Road(Point _p1, Point _p2) {
+    p1 = _p1;
+    p2 = _p2;
     
-    length = _length;
-    width = _width;
-    
-    shapes.add(new Rectangle(p, length, width, Color::ROAD));
-    Line * middleLine = new Line(p.x - length/2, p.y,
-                                 p.x + length/2, p.y,
+    rect = new Rectangle(p1, p2, Color::ROAD);
+    shapes.add(rect);
+    middleLine = new Line(p1.x, p1.y - (p1.y - p2.y)/2,
+                                 p1.x, p1.y - (p1.y - p2.y)/2,
                                  10, Color::WHITE);
     middleLine->dashed = true;
     middleLine->lineStippleMultiplier = 32;
@@ -34,4 +33,15 @@ void Road::draw() {
 
 bool Road::contains(int x, int y) {
     return shapes.contains(x, y);
+}
+
+void Road::update(Point _p1, Point _p2) {
+    p1 = _p1;
+    p2 = _p2;
+    
+    rect->p1.x = p1.x;
+    rect->p2.x = p2.x;
+    
+    middleLine->p1.x = p1.x;
+    middleLine->p2.x = p2.x;
 }

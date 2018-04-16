@@ -17,16 +17,23 @@
 #include "Line.hpp"
 
 class Road: public Shape {
-public:
+private:
     int length;
     int width;
+    Point p1;
+    Point p2;
     Shapes shapes;
-    Road(Point _p1, int _length, int _width);
+    Line * middleLine;
+    Rectangle * rect;
+public:
+    Road(Point _p1, Point _p2);
     ~Road();
     
     void draw();
     void update() {};
     bool contains(int x, int y);
+    
+    void update(Point _p1, Point _p2);
 };
 
 #endif /* Road_hpp */

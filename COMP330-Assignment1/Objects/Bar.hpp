@@ -34,6 +34,7 @@ public:
     ~Bar();
     void draw();
     void update() {};
+    void update(int, int);
     bool contains(int _x, int _y) { return false; };
     void setFilled(float _filled);
     float getFilled();
