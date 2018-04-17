@@ -17,9 +17,6 @@ Flamable::~Flamable() {
     for (auto f : potentialFire) {
         delete f;
     }
-    for (auto f : fire) {
-        delete f;
-    }
 }
 
 void Flamable::updateFire() {
