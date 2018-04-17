@@ -8,13 +8,13 @@
 
 #include "House.hpp"
 
-House::House(int x, int y, int size) {
+House::House(int x, int y, int size): Flamable(HOUSE_MAX_FIRE, HOUSE_MAX_FIRE_CYCLES) {
     p = Point(x, y);
     this->size = size;
     init();
 }
 
-House::House(Point p, int size) {
+House::House(Point p, int size): Flamable(HOUSE_MAX_FIRE, HOUSE_MAX_FIRE_CYCLES) {
     this->p = p;
     this->size = size;
     init();
@@ -51,17 +51,13 @@ void House::init() {
     shapes.add(new Triangle(p, topLeftCorner, bottomLeftBorner, roofColor));
     shapes.add(new Triangle(p, bottomLeftBorner, bottomRightCorner, roofColorDark));
 
-    potentialFire[0] = new Fire(p.x + size/4, p.y + size/4);
-    potentialFire[1] = new Fire(p.x + size/4, p.y - size/4);
-    potentialFire[2] = new Fire(p.x - size/4, p.y + size/4);
-    potentialFire[3] = new Fire(p.x - size/4, p.y - size/4);
-    std::random_shuffle(&potentialFire[0], &potentialFire[3]);
+    potentialFire.push_back(new Fire(p.x + size/4, p.y + size/4));
+    potentialFire.push_back(new Fire(p.x + size/4, p.y - size/4));
+    potentialFire.push_back(new Fire(p.x - size/4, p.y + size/4));
+    potentialFire.push_back(new Fire(p.x - size/4, p.y - size/4));
+    //std::random_shuffle(&potentialFire[0], &potentialFire[3]);
     
-    Color::Color ashes = Color::BLACK;
-    ashes.a = 0.6;
-    burntDownShapes.add(new ClosedCircle(p.x, p.y, size/2, ashes));
-    
-    setFire();
+    burntDownShapes.add(new ClosedCircle(p.x, p.y, size/2, Color::ASHES));
 }
 
 House::~House() {
@@ -69,18 +65,7 @@ House::~House() {
 }
 
 void House::update() {
-    if(onFire > 0) {
-        onFireCycles++;
-    }
-    if(onFireCycles > HOUSE_MAX_FIRE_CYCLES) {
-        if(fire.size() == HOUSE_MAX_FIRE) {
-            burntDown = true;
-            onFire = false;
-        } else {
-            fire.push_back(potentialFire[fire.size()]);
-        }
-        onFireCycles = 0;
-    }
+    updateFire();
 }
 
 void House::draw() {
@@ -100,17 +85,4 @@ bool House::contains(int x, int y) {
     } else {
         return shapes.contains(x, y);
     }
-}
-
-void House::setFire() {
-    onFire = true;
-    fire.push_back(potentialFire[0]);
-}
-
-void House::water() {
-    onFire = false;
-    std::for_each(fire.begin(), fire.end(), [](Fire * f) {
-        f->douse();
-    });
-    onFireCycles = 0;
 }

@@ -19,10 +19,10 @@
 #include "Animation.hpp"
 
 #define DEFUALT_DURATION 60
-#define WATER_START_SIZE 10
+#define WATER_START_SIZE 20
 #define WATER_END_SIZE 50
 #define WATER_START_ALPHA 1.0
-#define WATER_END_ALPHA 0.2
+#define WATER_END_ALPHA 0.3
 
 class WaterDrop: public Animation {
     Point p;

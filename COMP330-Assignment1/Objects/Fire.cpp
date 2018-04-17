@@ -26,9 +26,6 @@ Fire::Fire(int x, int y) {
     putOutShapes.add(new ClosedCircle(x, y, FIRE_SIZE, ashes));
 }
 
-Fire::~Fire() {
-}
-
 void Fire::draw() {
     if(!putOut) {
         shapes.draw();

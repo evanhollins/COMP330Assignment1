@@ -25,7 +25,6 @@ private:
     bool putOut;
 public:
     Fire(int x, int y);
-    ~Fire();
     void update() {};
     void draw();
     bool contains(int _x, int _y);

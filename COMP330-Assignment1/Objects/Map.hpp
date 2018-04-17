@@ -17,6 +17,8 @@
 #include "Lake.hpp"
 #include "Road.hpp"
 #include "House.hpp"
+#include "Tree.hpp"
+#include "Flamable.hpp"
 
 class Map {
 private:
@@ -24,7 +26,9 @@ private:
     Lake * lake;
     Road * road;
     Shapes houses;
+    Shapes trees;
     Shapes shapes;
+    vector<Flamable *> flamables;
     int x;
     int y;
     

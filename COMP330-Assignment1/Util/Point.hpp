@@ -23,6 +23,7 @@ public:
     float distanceTo(Point);
     void vertex();
     void translate();
+    Point between(Point other);
 };
 
 #endif /* Point_hpp */

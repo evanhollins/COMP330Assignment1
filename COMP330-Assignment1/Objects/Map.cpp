@@ -12,7 +12,7 @@ Map::Map(int _x, int _y) {
     x = _x;
     y = _y;
     
-    lake = new Lake(800, 650, 70);
+    lake = new Lake(860, 670, 70);
     
     base = new SESBase(80, 80);
     
@@ -31,10 +31,23 @@ Map::Map(int _x, int _y) {
     
     for (int i = 0; i < numberOfHouses; i++) {
         houses.add(new House(i * houseSpacing + houseOffset, houseTopRowY, houseSize));
+        trees.add(new Tree((i + 1) * houseSpacing, houseTopRowY - 20));
         houses.add(new House(i * houseSpacing + houseOffset, houseBottomRowY, houseSize));
+        trees.add(new Tree((i + 1) * houseSpacing, houseBottomRowY + 20));
     }
     
+    for (auto s : houses.get()) {
+        flamables.push_back((Flamable *) s);
+    }
+    for (auto s : trees.get()) {
+        flamables.push_back((Flamable *) s);
+    }
     
+    // Set fire to two random houses
+    House * temp = (House *) houses.get(rand() % houses.size());
+    temp->setFire();
+    temp = (House *) houses.get(rand() % houses.size());
+    temp->setFire();
 }
 
 Map::~Map() {
@@ -43,11 +56,27 @@ Map::~Map() {
 void Map::draw() {
     shapes.draw();
     houses.draw();
+    trees.draw();
 }
 
 void Map::update() {
+    vector<Flamable *> thingsOnFire;
+    for(auto f: flamables) {
+        if(f->onFire && f->fireCanSpread()) {
+            thingsOnFire.push_back(f);
+        }
+    }
+    for(auto f: thingsOnFire) {
+        for(auto s: flamables) {
+            if(f->getPoint().distanceTo(s->getPoint()) <= 150) {
+                s->setFire();
+            }
+        }
+    }
+    
     houses.update();
     shapes.update();
+    trees.update();
 }
 
 void Map::changeSize(int _x, int _y) {
@@ -66,10 +95,9 @@ bool Map::inBase(int _x, int _y) {
 }
 
 void Map::water(int _x, int _y) {
-    for(Shape * s: houses.get()) {
+    for(auto s: flamables) {
         if(s->getPoint().distanceTo(_x, _y) < 50) {
-            House * h = (House *) s;
-            h->water();
+            s->water();
         }
     }
 }

@@ -19,11 +19,12 @@
 #include "Circle.hpp"
 #include "Rectangle.hpp"
 #include "Fire.hpp"
+#include "Flamable.hpp"
 
 #define HOUSE_MAX_FIRE 4
 #define HOUSE_MAX_FIRE_CYCLES 600
 
-class House: public Shape {
+class House: public Flamable {
 private:
     Color::Color roofColorLight;
     Color::Color roofColor;
@@ -31,11 +32,6 @@ private:
     int size;
     Shapes shapes;
     Shapes burntDownShapes;
-    Fire * potentialFire[4];
-    vector<Fire *> fire;
-    bool onFire = false;
-    int onFireCycles = 0;
-    bool burntDown = false;
 public:
     House(int x, int y, int size);
     House(Point p, int size);
@@ -45,9 +41,6 @@ public:
     void update();
     void draw();
     bool contains(int x, int y);
-    
-    void setFire();
-    void water();
 };
 
 #endif /* House_hpp */

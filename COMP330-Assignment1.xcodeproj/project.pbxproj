@@ -11,6 +11,9 @@
 		3749D3AA20748CBD00184C15 /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3749D3A820748CBD00184C15 /* Point.cpp */; };
 		3749D3AD2074AC5C00184C15 /* SESBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3749D3AB2074AC5C00184C15 /* SESBase.cpp */; };
 		3749D3B32075ECFE00184C15 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3749D3B12075ECFE00184C15 /* Map.cpp */; };
+		374AC3E52084AB1600CE1518 /* Tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 374AC3E32084AB1600CE1518 /* Tree.cpp */; };
+		374AC3E820864FD000CE1518 /* Trapazoid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 374AC3E620864FD000CE1518 /* Trapazoid.cpp */; };
+		374AC3EB20867F4000CE1518 /* Flamable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 374AC3E920867F4000CE1518 /* Flamable.cpp */; };
 		375BA215206CFFBA000C8A7A /* Propeller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 375BA213206CFFBA000C8A7A /* Propeller.cpp */; };
 		37714833207F54D20050755B /* Fire.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37714831207F54D20050755B /* Fire.cpp */; };
 		37714836207F595D0050755B /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37714834207F595D0050755B /* Triangle.cpp */; };
@@ -52,6 +55,12 @@
 		3749D3AC2074AC5C00184C15 /* SESBase.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SESBase.hpp; sourceTree = "<group>"; };
 		3749D3B12075ECFE00184C15 /* Map.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
 		3749D3B22075ECFE00184C15 /* Map.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Map.hpp; sourceTree = "<group>"; };
+		374AC3E32084AB1600CE1518 /* Tree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Tree.cpp; sourceTree = "<group>"; };
+		374AC3E42084AB1600CE1518 /* Tree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Tree.hpp; sourceTree = "<group>"; };
+		374AC3E620864FD000CE1518 /* Trapazoid.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Trapazoid.cpp; sourceTree = "<group>"; };
+		374AC3E720864FD000CE1518 /* Trapazoid.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Trapazoid.hpp; sourceTree = "<group>"; };
+		374AC3E920867F4000CE1518 /* Flamable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Flamable.cpp; sourceTree = "<group>"; };
+		374AC3EA20867F4000CE1518 /* Flamable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Flamable.hpp; sourceTree = "<group>"; };
 		375BA213206CFFBA000C8A7A /* Propeller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Propeller.cpp; sourceTree = "<group>"; };
 		375BA214206CFFBA000C8A7A /* Propeller.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Propeller.hpp; sourceTree = "<group>"; };
 		37714831207F54D20050755B /* Fire.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Fire.cpp; sourceTree = "<group>"; };
@@ -113,6 +122,8 @@
 				3749D3A62074733000184C15 /* Line.hpp */,
 				37714834207F595D0050755B /* Triangle.cpp */,
 				37714835207F595D0050755B /* Triangle.hpp */,
+				374AC3E620864FD000CE1518 /* Trapazoid.cpp */,
+				374AC3E720864FD000CE1518 /* Trapazoid.hpp */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -153,6 +164,10 @@
 				37714838207F6A930050755B /* Road.hpp */,
 				3771483A2080BAE70050755B /* House.cpp */,
 				3771483B2080BAE70050755B /* House.hpp */,
+				374AC3E32084AB1600CE1518 /* Tree.cpp */,
+				374AC3E42084AB1600CE1518 /* Tree.hpp */,
+				374AC3E920867F4000CE1518 /* Flamable.cpp */,
+				374AC3EA20867F4000CE1518 /* Flamable.hpp */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -233,7 +248,7 @@
 		37E8B0002059313500CE56BF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Evan Hollins";
 				TargetAttributes = {
 					37E8B0072059313500CE56BF = {
@@ -267,6 +282,7 @@
 				37778D182082C3F100153FBE /* WaterDrop.cpp in Sources */,
 				3749D3AA20748CBD00184C15 /* Point.cpp in Sources */,
 				3749D3AD2074AC5C00184C15 /* SESBase.cpp in Sources */,
+				374AC3E52084AB1600CE1518 /* Tree.cpp in Sources */,
 				37B343B120731FFF0085F6FE /* Lake.cpp in Sources */,
 				37B12DFE2060B258001DDC56 /* Helicopter.cpp in Sources */,
 				3771483C2080BAE70050755B /* House.cpp in Sources */,
@@ -275,11 +291,13 @@
 				37B12E002060B322001DDC56 /* Color.cpp in Sources */,
 				37E5FBE5206CCDF500C6977D /* Shape.cpp in Sources */,
 				37714839207F6A930050755B /* Road.cpp in Sources */,
+				374AC3E820864FD000CE1518 /* Trapazoid.cpp in Sources */,
 				375BA215206CFFBA000C8A7A /* Propeller.cpp in Sources */,
 				37B343AE2072FF320085F6FE /* MathUtil.cpp in Sources */,
 				37714836207F595D0050755B /* Triangle.cpp in Sources */,
 				37778D1E208305E900153FBE /* Animation.cpp in Sources */,
 				37E5FBE1206CBF9900C6977D /* Rectangle.cpp in Sources */,
+				374AC3EB20867F4000CE1518 /* Flamable.cpp in Sources */,
 				37E8B00C2059313500CE56BF /* main.cpp in Sources */,
 				3749D3B32075ECFE00184C15 /* Map.cpp in Sources */,
 				37B343B42073407F0085F6FE /* Bar.cpp in Sources */,
@@ -304,6 +322,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -311,6 +330,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -359,6 +379,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -366,6 +387,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

@@ -13,6 +13,14 @@ Lake::Lake(int _x, int _y, int _size) {
     size = _size;
     
     shapes.add(new ClosedCircle(p.x, p.y, size, Color::WATER));
+    Point smallerLake = Point(p.x - 100, p.y + 20);
+    shapes.add(new ClosedCircle(smallerLake.x, smallerLake.y, size - 30, Color::WATER));
+    
+    Trapazoid * bridge = new Trapazoid(p.between(smallerLake), p.distanceTo(smallerLake), (size - 30)*2, size*2, Color::WATER);
+    bridge->angle = -11;
+    
+    shapes.add(bridge);
+    
     Color::Color darkerWater = Color::WATER;
     darkerWater.r -= 0.1;
     darkerWater.g -= 0.1;
@@ -23,6 +31,10 @@ Lake::Lake(int _x, int _y, int _size) {
     darkestWater.g -= 0.1;
     darkestWater.b -= 0.1;
     shapes.add(new ClosedCircle(p.x + 10, p.y, size*0.4, darkestWater));
+    
+    
+    
+    
 }
 
 Lake::~Lake() {

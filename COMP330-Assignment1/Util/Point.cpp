@@ -23,3 +23,7 @@ void Point::vertex() {
 void Point::translate() {
     glTranslatef(x, y, 0);
 }
+
+Point Point::between(Point other) {
+    return Point((other.x - x)/2 + x, (other.y - y)/2 + y);
+}

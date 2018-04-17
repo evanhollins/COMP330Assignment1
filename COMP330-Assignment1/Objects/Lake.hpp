@@ -15,6 +15,7 @@
 #include "Color.hpp"
 #include "Shape.hpp"
 #include "Circle.hpp"
+#include "Trapazoid.hpp"
 
 class Lake: public Shape {
 private:

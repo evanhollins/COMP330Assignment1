@@ -49,6 +49,9 @@ namespace Color {
     const Color ROOF_RED_LIGHT {1.0, 0.66, 0.53, 1.0};
     const Color ROOF_RED {0.98, 0.64, 0.51, 1.0};
     const Color ROOF_RED_DARK {0.96, 0.62, 0.49, 1.0};
+    const Color TREE_TRUNK {0.44, 0.27, 0.05, 1.0};
+    const Color TREE_LEAVES {0.02, 0.48, 0.16, 1.0};
+    const Color ASHES {0.0, 0.0, 0.0, 0.6};
 }
 
 #endif
