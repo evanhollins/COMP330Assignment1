@@ -20,6 +20,12 @@ Flamable::~Flamable() {
 }
 
 void Flamable::updateFire() {
+    if(doused) {
+        dousedCycles++;
+        if (dousedCycles > FIRE_DOUSED_CYCLES) {
+            doused = false;
+        }
+    }
     if(onFire) {
         onFireCycles++;
     }
@@ -35,20 +41,28 @@ void Flamable::updateFire() {
 }
 
 void Flamable::setFire() {
-    if(!onFire) {
+    if(!onFire && !doused) {
         onFire = true;
+        if(fire.size() > 0) {
+            fire.clear();
+            for (auto f : potentialFire) {
+                f->putOut = false;
+            }
+        }
         fire.push_back(potentialFire[0]);
     }
 }
 
 void Flamable::water() {
     onFire = false;
-    std::for_each(fire.begin(), fire.end(), [](Fire * f) {
+    for (auto f : fire) {
         f->douse();
-    });
+    }
     onFireCycles = 0;
+    dousedCycles = 0;
+    doused = true;
 }
 
 bool Flamable::fireCanSpread() {
-    return fire.size() > 1;
+    return fire.size() > 1 && onFire;
 }

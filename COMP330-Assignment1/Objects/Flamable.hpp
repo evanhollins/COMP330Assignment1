@@ -15,11 +15,15 @@
 #include "Fire.hpp"
 #include "Shape.hpp"
 
+#define FIRE_DOUSED_CYCLES 120
+
 class Flamable: public Shape {
 protected:
     std::vector<Fire *> potentialFire;
     std::vector<Fire *> fire;
     int onFireCycles = 0;
+    int dousedCycles = 0;
+    bool doused = false;
     bool burntDown = false;
     int maxFireCycles;
     int maxFire;

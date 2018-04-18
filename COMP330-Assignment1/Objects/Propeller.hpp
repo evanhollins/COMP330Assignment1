@@ -17,6 +17,10 @@ using namespace std;
 #include "Color.hpp"
 #include "Circle.hpp"
 
+#define NUMBER_OF_PROPELLORS 3
+#define PROPELLOR_WIDTH 12
+#define PROPELLOR_SPEED 5
+
 class Propellor: public Shape {
 public:
     int radius;

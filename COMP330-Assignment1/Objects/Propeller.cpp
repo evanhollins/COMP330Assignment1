@@ -24,7 +24,7 @@ Propellor::~Propellor() {
 
 void Propellor::update() {
     if(spinning) {
-        angle = (angle + 5) % 360;
+        angle = (angle + PROPELLOR_SPEED) % FULL_CIRCLE_DEG;
     }
 }
 
@@ -34,13 +34,13 @@ void Propellor::draw() {
     glPushMatrix();
     p.translate();
     glRotatef(angle, 0, 0, 1);
-    for(int i = 0; i < 3; i++) {
+    for(int i = 0; i < NUMBER_OF_PROPELLORS; i++) {
         glBegin(GL_TRIANGLE_FAN);
         glVertex2f(0, 0); // center of circle
-        for(int j = 0; j < 12; j++) {
+        for(int j = 0; j < PROPELLOR_WIDTH; j++) {
             glVertex2f(
-                       (radius * cos((j + (120 * i)) * TWICEPI / FULL_CIRCLE_DEG)),
-                       (radius * sin((j + (120 * i)) * TWICEPI / FULL_CIRCLE_DEG))
+                       (radius * cos((j + (THIRD_CIRCLE_DEG * i)) * TWICEPI / FULL_CIRCLE_DEG)),
+                       (radius * sin((j + (THIRD_CIRCLE_DEG * i)) * TWICEPI / FULL_CIRCLE_DEG))
                        );
         }
         glEnd();

@@ -15,7 +15,7 @@ Road::Road(Point _p1, Point _p2) {
     rect = new Rectangle(p1, p2, Color::ROAD);
     shapes.add(rect);
     middleLine = new Line(p1.x, p1.y - (p1.y - p2.y)/2,
-                                 p1.x, p1.y - (p1.y - p2.y)/2,
+                                 p2.x, p1.y - (p1.y - p2.y)/2,
                                  10, Color::WHITE);
     middleLine->dashed = true;
     middleLine->lineStippleMultiplier = 32;

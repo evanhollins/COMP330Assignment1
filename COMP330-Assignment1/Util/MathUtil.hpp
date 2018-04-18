@@ -16,6 +16,7 @@
 #define FULL_CIRCLE_DEG 360
 #define THREE_QUATER_CIRCLE_DEG 270
 #define HALF_CIRLCE_DEG 180
+#define THIRD_CIRCLE_DEG 120
 #define QUARTER_CIRCLE_DEG 90
 
 int quadrantSignX(int angle);

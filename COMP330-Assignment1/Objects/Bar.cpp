@@ -8,12 +8,14 @@
 
 #include "Bar.hpp"
 
-Bar::Bar(int _x, int _y, int _width, int _height, Color::Color _color) {
+Bar::Bar(int _x, int _y, int _width, int _height, Color::Color _color, string _text) {
     setPoint(_x, _y);
     width = _width;
     height = _height;
     filled = BAR_MIN_FILLED;
     color = _color;
+    text = _text;
+    textColor = Color::BLACK;
     
     background = new Rectangle(p.x, p.y, width, height, Color::BLACK);
     Point foregroundTopRight = Point(p.x + width/2 - PADDING, p.y + height/2 - PADDING);
@@ -25,6 +27,14 @@ Bar::~Bar() {
 }
 
 void Bar::draw() {
+    textColor.set();
+    glPushMatrix();
+    glRasterPos2i(p.x, p.y - TEXT_Y_OFFSET);
+    for (auto c : text) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, c);
+    }
+    glPopMatrix();
+    
     background->draw();
     foreground->draw();
 }

@@ -12,18 +12,18 @@ Map::Map(int _x, int _y) {
     x = _x;
     y = _y;
     
-    lake = new Lake(860, 670, 70);
+    lake = new Lake(LAKE_X, LAKE_Y, LAKE_SIZE);
     
-    base = new SESBase(80, 80);
+    base = new SESBase(SES_BASE_X, SES_BASE_Y);
     
-    road = new Road(Point(0, y/2 - 75), Point(x, y/2 + 75));
+    road = new Road(Point(0, ROAD_X - ROAD_SIZE/2), Point(x, ROAD_X + ROAD_SIZE/2));
     
     shapes.add(lake);
     shapes.add(base);
     shapes.add(road);
     
-    int houseTopRowY = y / 2 - 150;
-    int houseBottomRowY = y / 2 + 150;
+    int houseTopRowY = ROAD_X - ROAD_SIZE;
+    int houseBottomRowY = ROAD_X + ROAD_SIZE;
     int houseSize = 80;
     int houseSpacing = houseSize * 2;
     int houseOffset = houseSize;
@@ -43,10 +43,10 @@ Map::Map(int _x, int _y) {
         flamables.push_back((Flamable *) s);
     }
     
-    // Set fire to two random houses
-    House * temp = (House *) houses.get(rand() % houses.size());
+    // Set fire to two random things
+    Flamable * temp = flamables[rand() % houses.size()];
     temp->setFire();
-    temp = (House *) houses.get(rand() % houses.size());
+    temp = flamables[rand() % houses.size()];
     temp->setFire();
 }
 
@@ -68,7 +68,7 @@ void Map::update() {
     }
     for(auto f: thingsOnFire) {
         for(auto s: flamables) {
-            if(f->getPoint().distanceTo(s->getPoint()) <= 150) {
+            if(f->getPoint().distanceTo(s->getPoint()) <= FIRE_SPREAD_RADIUS) {
                 s->setFire();
             }
         }
@@ -83,7 +83,7 @@ void Map::changeSize(int _x, int _y) {
     x = _x;
     y = _y;
     
-    road->update(Point(0, y/2 - 75), Point(x, y/2 + 75));
+    road->update(Point(0, ROAD_X - ROAD_SIZE/2), Point(x, ROAD_X + ROAD_SIZE/2));
 }
 
 bool Map::inLake(int _x, int _y) {
@@ -96,7 +96,7 @@ bool Map::inBase(int _x, int _y) {
 
 void Map::water(int _x, int _y) {
     for(auto s: flamables) {
-        if(s->getPoint().distanceTo(_x, _y) < 50) {
+        if(s->getPoint().distanceTo(_x, _y) < WATER_SPREAD_RADIUS) {
             s->water();
         }
     }

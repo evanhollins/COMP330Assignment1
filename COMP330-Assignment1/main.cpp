@@ -25,7 +25,9 @@ struct Globals {
 
 enum MENU {
     EXIT,
-    RESET
+    RESET,
+    PAUSE,
+    RESUME
 };
 
 void init(void)   /* initialization function  */
@@ -42,15 +44,15 @@ void init(void)   /* initialization function  */
                                 globals.windowY/2,
                                 HELICOPTER_SIZE);
     
-    waterBar = new Bar(globals.windowX - 60,
-                            50,
-                            100,
-                            20, Color::WATER);
+    waterBar = new Bar(globals.windowX + WATERBAR_X,
+                            WATERBAR_Y,
+                            WATERBAR_SIZE_X,
+                            WATERBAR_SIZE_Y, Color::WATER, "Water");
 
-    fuelBar = new Bar(globals.windowX - 60,
-                       20,
-                       100,
-                       20, Color::FUEL);
+    fuelBar = new Bar(globals.windowX + FUELBAR_X,
+                       FUELBAR_Y,
+                       FUELBAR_SIZE_X,
+                       FUELBAR_SIZE_Y, Color::FUEL, "Fuel");
     fuelBar->setFilled(1.0);
 }
 
@@ -139,6 +141,9 @@ void keyCB(unsigned char key, int x, int y) {
         case 'r':
             globals.running = true;
             break;
+        case 'w':
+            reset();
+            break;
         case ' ':
             break;
         default:
@@ -163,10 +168,15 @@ void menuCB(int menu) {
             break;
         case RESET:
             reset();
+        case PAUSE:
+            globals.running = false;
+            break;
+        case RESUME:
+            globals.running = true;
+            break;
         default:
             break;
     }
-    globals.running = true;
 }
 
 void mouseMotion(int x, int y) {
@@ -207,6 +217,11 @@ void handleClick(int x, int y) {
 }
 
 void handleReshape(int x, int y) {
+    if(x < WINDOW_MIN_SIZE_X || y < WINDOW_MIN_SIZE_Y) {
+        glutReshapeWindow(max(x, WINDOW_MIN_SIZE_X), max(y, WINDOW_MIN_SIZE_Y));
+        return;
+    }
+    
     globals.windowX = x;
     globals.windowY = y;
     glClearColor(background.r,
@@ -219,8 +234,8 @@ void handleReshape(int x, int y) {
     gluOrtho2D(0, globals.windowX, globals.windowY, 0); /* defines world window */
     
     map->changeSize(x, y);
-    fuelBar->update(globals.windowX - 60, 20);
-    waterBar->update(globals.windowX - 60, 50);
+    fuelBar->update(globals.windowX + FUELBAR_X, FUELBAR_Y);
+    waterBar->update(globals.windowX + WATERBAR_X, WATERBAR_Y);
 }
 
 void mouseClicked(int button, int state, int x, int y) {
@@ -263,8 +278,10 @@ int main(int argc, char *argv[]) {
     
     // Right Click Menu
     glutCreateMenu(menuCB);
-    glutAddMenuEntry("Exit", EXIT);
-    glutAddMenuEntry("Reset", RESET);
+    glutAddMenuEntry("Exit (q)", EXIT);
+    glutAddMenuEntry("Reset (w)", RESET);
+    glutAddMenuEntry("Pause (p)", PAUSE);
+    glutAddMenuEntry("Resume (r)", RESUME);
     glutAttachMenu(GLUT_RIGHT_BUTTON);
     
     glutTimerFunc(0, update, 0);     // First timer call immediately

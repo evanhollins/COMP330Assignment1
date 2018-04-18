@@ -20,6 +20,16 @@
 #include "Tree.hpp"
 #include "Flamable.hpp"
 
+#define LAKE_X 860
+#define LAKE_Y 670
+#define LAKE_SIZE 70
+#define SES_BASE_X 80
+#define SES_BASE_Y 80
+#define ROAD_X 375
+#define ROAD_SIZE 150
+#define FIRE_SPREAD_RADIUS 150
+#define WATER_SPREAD_RADIUS 50
+
 class Map {
 private:
     SESBase * base;

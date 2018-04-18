@@ -22,8 +22,8 @@ class Fire: public Shape {
 private:
     Shapes shapes;
     Shapes putOutShapes;
-    bool putOut;
 public:
+    bool putOut;
     Fire(int x, int y);
     void update() {};
     void draw();
